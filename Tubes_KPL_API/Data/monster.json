@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Goblin",
+    "health": 30,
+    "race": "Beast",
+    "damage": 5
+  },
+  {
+    "id": 2,
+    "name": "Dragon",
+    "health": 300,
+    "race": "Dragon",
+    "damage": 50
+  },
+  {
+    "id": 3,
+    "name": "Fiend",
+    "health": 100,
+    "race": "Demon",
+    "damage": 120
+  }
+]
