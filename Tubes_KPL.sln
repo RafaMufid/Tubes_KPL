@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35818.85 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tubes_KPL_Program", "Tubes_KPL_Program\Tubes_KPL_Program.csproj", "{2A026E40-544A-449D-867A-B6198F0E64FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tubes_KPL_API", "Tubes_KPL_API\Tubes_KPL_API.csproj", "{C01B266A-827D-4444-A2E7-883812D3FADB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tubes_KPL_Libraries", "Tubes_KPL_Libraries\Tubes_KPL_Libraries.csproj", "{EAA0057C-FBF5-474D-996F-5D30D15E1F9C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A026E40-544A-449D-867A-B6198F0E64FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A026E40-544A-449D-867A-B6198F0E64FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A026E40-544A-449D-867A-B6198F0E64FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A026E40-544A-449D-867A-B6198F0E64FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C01B266A-827D-4444-A2E7-883812D3FADB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C01B266A-827D-4444-A2E7-883812D3FADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C01B266A-827D-4444-A2E7-883812D3FADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C01B266A-827D-4444-A2E7-883812D3FADB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAA0057C-FBF5-474D-996F-5D30D15E1F9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAA0057C-FBF5-474D-996F-5D30D15E1F9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAA0057C-FBF5-474D-996F-5D30D15E1F9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAA0057C-FBF5-474D-996F-5D30D15E1F9C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A0F483F6-044A-42FE-BC75-1C461008FCA2}
+	EndGlobalSection
+EndGlobal
