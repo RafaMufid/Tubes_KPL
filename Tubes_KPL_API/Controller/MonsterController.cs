@@ -1,4 +1,4 @@
-﻿namespace Tubes_API.Controllers
+﻿namespace Tubes_API.Controller
 {
     using Microsoft.AspNetCore.Mvc;
     using Tubes_KPL_API.Model;
