@@ -54,12 +54,5 @@
     "type": "Magic",
     "price": 500,
     "baseDamage": 200
-  },
-  {
-    "id": 8,
-    "name": "panci",
-    "type": "Strike",
-    "price": 70,
-    "baseDamage": 20
   }
 ]
