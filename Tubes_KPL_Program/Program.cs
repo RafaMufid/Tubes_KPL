@@ -14,6 +14,7 @@ class Program
             Console.WriteLine("=== Feature Test Console App ===");
             Console.WriteLine("1. Monster Menu");
             Console.WriteLine("2. Weapon Menu");
+            Console.WriteLine("3. Charm Menu");
             Console.WriteLine("0. Exit");
             Console.Write(">> Choose an option: ");
             var choice = Console.ReadLine();
@@ -26,6 +27,10 @@ class Program
 
                 case "2":
                     await WeaponMenu.Run();
+                    break;
+
+                case "3":
+                    await CharmMenu.Run();
                     break;
 
                 case "0":
