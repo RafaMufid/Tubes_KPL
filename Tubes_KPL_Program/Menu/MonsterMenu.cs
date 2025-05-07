@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tubes_KPL_Program.Model;
 using Tubes_KPL_Program.Service;
+using Tubes_KPL_Libraries.Validation;
 
 namespace Tubes_KPL_Program.Menu
 {
@@ -193,10 +194,10 @@ namespace Tubes_KPL_Program.Menu
 
         private static Monster GetMonsterInput()
         {
-            string name = GetValidatedString("Name");
-            int health = GetPositiveIntegerInput("Health");
-            string race = GetValidatedString("Race");
-            int damage = GetPositiveIntegerInput("Damage");
+            string name = ValidateString.GetValidatedString("Monster Name");
+            int health = ValidateInt.GetPositiveIntegerInput("Monster Health");
+            string race = ValidateString.GetValidatedString("Monster Race");
+            int damage = ValidateInt.GetPositiveIntegerInput("Monster Damage");
 
             return new Monster
             {
@@ -205,72 +206,6 @@ namespace Tubes_KPL_Program.Menu
                 race = race,
                 damage = damage
             };
-        }
-
-        private static int GetPositiveIntegerInput(string fieldInput)
-        {
-            int value;
-            do
-            {
-                Console.Write($">> Enter Monster {fieldInput}: ");
-                var input = Console.ReadLine()?.Trim();
-
-                if (string.IsNullOrWhiteSpace(input))
-                {
-                    Console.WriteLine($">!!!> {fieldInput} cannot be empty. Please enter a number.");
-                }
-
-                if (!int.TryParse(input, out value))
-                {
-                    Console.WriteLine($">!!!> {fieldInput} must be a number. Please try again.");
-                    continue;
-                }
-
-                if (value <= 0)
-                {
-                    Console.WriteLine($">!!!> {fieldInput} must be a positive number. Please try again.");
-                }
-            } while (value <= 0);
-
-            return value;
-        }
-        
-        private static string GetValidatedString(string fieldInput)
-        {
-            string input;
-            do
-            {
-                Console.Write($">> Enter Monster {fieldInput}: ");
-                input = Console.ReadLine()?.Trim();
-
-                if (string.IsNullOrWhiteSpace(input))
-                {
-                    Console.WriteLine($">!!!> {fieldInput} cannot be empty. Please try again.");
-                    continue;
-                }
-
-                if (input.Any(char.IsDigit))
-                {
-                    Console.WriteLine($">!!!> {fieldInput} cannot contain numbers. Please enter letters only.");
-                    continue;
-                }
-
-                if (input.Any(ch => !char.IsLetter(ch) && ch != ' '))
-                {
-                    Console.WriteLine($">!!!> {fieldInput} can only contain letters and spaces. Please remove any special characters.");
-                    continue;
-                }
-
-                if (input.Length > 50)
-                {
-                    Console.WriteLine($">!!!> {fieldInput} cannot be longer than 50 characters. Please shorten it.");
-                    continue;
-                }
-
-                break; // Input valid, keluar dari loop
-            } while (true);
-
-            return input;
         }
     }
 }
