@@ -7,4 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Tubes_KPL_Libraries\Tubes_KPL_Libraries.csproj" />
+  </ItemGroup>
+
 </Project>

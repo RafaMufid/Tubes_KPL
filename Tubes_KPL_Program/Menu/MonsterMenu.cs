@@ -76,28 +76,17 @@ namespace Tubes_KPL_Program.Menu
 
         private static async Task AddMonster(MonsterClient apiClient)
         {
-            Console.Write("Enter Monster Name: ");
-            var name = Console.ReadLine();
-            Console.Write("Enter Monster Health: ");
-            int health = int.TryParse(Console.ReadLine(), out var h) ? h : 0;
-            Console.Write("Enter Monster Race: ");
-            var race = Console.ReadLine();
-            Console.Write("Enter Monster Damage: ");
-            int damage = int.TryParse(Console.ReadLine(), out var d) ? d : 0;
-
-            var newMonster = new Monster
-            {
-                name = name,
-                health = health,
-                race = race,
-                damage = damage
-            };
+            var newMonster = GetMonsterInput();
 
             var success = await apiClient.AddMonsterAsync(newMonster);
             if (success)
+            {
                 Console.WriteLine(">> Monster added successfully!");
+            }
             else
-                Console.WriteLine(">> Failed to add monster.");
+            {
+                Console.WriteLine(">!!!> Failed to add monster.");
+            }
 
             Console.Write("\n>> Press any key to continue...");
             Console.ReadKey();
@@ -105,7 +94,7 @@ namespace Tubes_KPL_Program.Menu
 
         private static async Task UpdateMonster(MonsterClient apiClient)
         {
-            Console.Write("Enter Monster ID to Update: ");
+            Console.Write(">> Enter Monster ID to Update: ");
             if (int.TryParse(Console.ReadLine(), out int id))
             {
                 var existing = await apiClient.GetMonsterByIdAsync(id);
@@ -115,40 +104,73 @@ namespace Tubes_KPL_Program.Menu
                     var updatedMonster = GetMonsterInput();
 
                     var success = await apiClient.UpdateMonsterAsync(id, updatedMonster);
-                    Console.WriteLine(success ? "Monster updated successfully!" : "Failed to update monster.");
+                    Console.WriteLine(success ? ">> Monster updated successfully!" : ">!!!> Failed to update monster.");
                 }
                 else
                 {
-                    Console.WriteLine("Monster not found.");
+                    Console.WriteLine(">> Monster not found.");
                 }
-            }
-            else
-            {
-                Console.WriteLine("Invalid ID input.");
-            }
-            Console.WriteLine("\nPress any key to continue...");
-            Console.ReadKey();
-        }
-
-        private static async Task DeleteMonster(MonsterClient apiClient)
-        {
-            Console.Write("Enter Monster ID to Delete: ");
-            if (int.TryParse(Console.ReadLine(), out int id))
-            {
-                var success = await apiClient.DeleteMonsterAsync(id);
-                Console.WriteLine(success ? "Monster deleted successfully!" : "Failed to delete monster.");
             }
             else
             {
                 Console.WriteLine(">!!!> Invalid ID input.");
             }
-            Console.Write("\n> Press any key to continue...");
+            Console.WriteLine("\n>> Press any key to continue...");
+            Console.ReadKey();
+        }
+
+        private static async Task DeleteMonster(MonsterClient apiClient)
+        {
+            try
+            {
+                Console.Write(">> Enter Monster ID to Delete: ");
+                if (int.TryParse(Console.ReadLine(), out int id))
+                {
+                    var monster = await apiClient.GetMonsterByIdAsync(id);
+                    if (monster == null)
+                    {
+                        Console.WriteLine(">> Monster not found.");
+                    }
+                    else
+                    {
+                        string confirm;
+                        do
+                        {
+                            Console.WriteLine($">> Are you sure you want to delete '{monster.name}'? (Y/N)");
+                            confirm = Console.ReadLine()?.Trim().ToUpper();
+                            if (confirm != "Y" && confirm != "N")
+                            {
+                                Console.WriteLine(">> Please enter 'Y' for Yes or 'N' for No.");
+                            }
+                        } while (confirm != "Y" && confirm != "N");
+
+                        if (confirm == "Y")
+                        {
+                            var success = await apiClient.DeleteMonsterAsync(id);
+                            Console.WriteLine(success ? ">> Monster deleted successfully!" : ">!!!> Failed to delete monster.");
+                        }
+                        else
+                        {
+                            Console.WriteLine(">> Delete operation canceled.");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine(">!!!> Invalid ID input.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($">!!!> Error deleting monster: {ex.Message}");
+            }
+            Console.Write("\n>> Press any key to continue...");
             Console.ReadKey();
         }
 
         private static async Task SearchMonster(MonsterClient apiClient)
         {
-            Console.Write("Enter Monster ID to Search: ");
+            Console.Write(">> Enter Monster ID to Search: ");
             if (int.TryParse(Console.ReadLine(), out int id))
             {
                 var monster = await apiClient.GetMonsterByIdAsync(id);
@@ -158,35 +180,97 @@ namespace Tubes_KPL_Program.Menu
                 }
                 else
                 {
-                    Console.WriteLine("Monster not found.");
+                    Console.WriteLine(">> Monster not found.");
                 }
             }
             else
             {
-                Console.WriteLine("Invalid ID input.");
+                Console.WriteLine(">!!!> Invalid ID input.");
             }
-            Console.WriteLine("\nPress any key to continue...");
+            Console.WriteLine("\n>> Press any key to continue...");
             Console.ReadKey();
         }
 
         private static Monster GetMonsterInput()
         {
-            Console.Write("Enter Monster Name: ");
-            var name = Console.ReadLine();
-            Console.Write("Enter Monster Health: ");
-            int health = int.TryParse(Console.ReadLine(), out var h) ? h : 0;
-            Console.Write("Enter Monster Race: ");
-            var race = Console.ReadLine();
-            Console.Write("Enter Monster Damage: ");
-            int damage = int.TryParse(Console.ReadLine(), out var d) ? d : 0;
+            string name = GetValidatedString("Name");
+            int health = GetPositiveIntegerInput("Health");
+            string race = GetValidatedString("Race");
+            int damage = GetPositiveIntegerInput("Damage");
 
             return new Monster
             {
-                name = name ?? "Unknown",
+                name = name,
                 health = health,
-                race = race ?? "Unknown",
+                race = race,
                 damage = damage
             };
+        }
+
+        private static int GetPositiveIntegerInput(string fieldInput)
+        {
+            int value;
+            do
+            {
+                Console.Write($">> Enter Monster {fieldInput}: ");
+                var input = Console.ReadLine()?.Trim();
+
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    Console.WriteLine($">!!!> {fieldInput} cannot be empty. Please enter a number.");
+                }
+
+                if (!int.TryParse(input, out value))
+                {
+                    Console.WriteLine($">!!!> {fieldInput} must be a number. Please try again.");
+                    continue;
+                }
+
+                if (value <= 0)
+                {
+                    Console.WriteLine($">!!!> {fieldInput} must be a positive number. Please try again.");
+                }
+            } while (value <= 0);
+
+            return value;
+        }
+        
+        private static string GetValidatedString(string fieldInput)
+        {
+            string input;
+            do
+            {
+                Console.Write($">> Enter Monster {fieldInput}: ");
+                input = Console.ReadLine()?.Trim();
+
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    Console.WriteLine($">!!!> {fieldInput} cannot be empty. Please try again.");
+                    continue;
+                }
+
+                if (input.Any(char.IsDigit))
+                {
+                    Console.WriteLine($">!!!> {fieldInput} cannot contain numbers. Please enter letters only.");
+                    continue;
+                }
+
+                if (input.Any(ch => !char.IsLetter(ch) && ch != ' '))
+                {
+                    Console.WriteLine($">!!!> {fieldInput} can only contain letters and spaces. Please remove any special characters.");
+                    continue;
+                }
+
+                if (input.Length > 50)
+                {
+                    Console.WriteLine($">!!!> {fieldInput} cannot be longer than 50 characters. Please shorten it.");
+                    continue;
+                }
+
+                break; // Input valid, keluar dari loop
+            } while (true);
+
+            return input;
         }
     }
 }
