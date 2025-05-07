@@ -83,7 +83,7 @@
             }
             catch (Exception ex)
             {
-                Console.WriteLine($">!!!> Error adding monster: {ex.Message}");
+                Console.WriteLine($">!!!> Error adding weapon: {ex.Message}");
             }
         }
 
@@ -94,13 +94,13 @@
                 if (updatedWeapon == null)
                     throw new ArgumentNullException(nameof(updatedWeapon));
 
-                var monster = GetWeaponById(id);
-                if (monster != null)
+                var weapon = GetWeaponById(id);
+                if (weapon != null)
                 {
-                    monster.name = updatedWeapon.name;
-                    monster.type = updatedWeapon.type;
-                    monster.price = updatedWeapon.price;
-                    monster.baseDamage = updatedWeapon.baseDamage;
+                    weapon.name = updatedWeapon.name;
+                    weapon.type = updatedWeapon.type;
+                    weapon.price = updatedWeapon.price;
+                    weapon.baseDamage = updatedWeapon.baseDamage;
                     SaveToFile();
                 }
                 else
