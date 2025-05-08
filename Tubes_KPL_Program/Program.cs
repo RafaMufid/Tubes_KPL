@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using Tubes_KPL_Program.Battle;
 using Tubes_KPL_Program.Menu;
 
 class Program
@@ -15,6 +16,7 @@ class Program
             Console.WriteLine("1. Monster Menu");
             Console.WriteLine("2. Weapon Menu");
             Console.WriteLine("3. Charm Menu");
+            Console.WriteLine("4. battle test");
             Console.WriteLine("0. Exit");
             Console.Write(">> Choose an option: ");
             var choice = Console.ReadLine();
@@ -31,6 +33,10 @@ class Program
 
                 case "3":
                     await CharmMenu.Run();
+                    break;
+
+                case "4":
+                    Battle.Start();
                     break;
 
                 case "0":
