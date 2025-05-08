@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tubes_KPL_Libraries.Validation;
 using Tubes_KPL_Program.Model;
 using Tubes_KPL_Program.Service;
 
@@ -76,28 +77,17 @@ namespace Tubes_KPL_Program.Menu
 
         private static async Task AddWeapon(WeaponClient apiClient)
         {
-            Console.Write("Enter Weapon Name: ");
-            var name = Console.ReadLine();
-            Console.Write("Enter Weapon Type: ");
-            var type = Console.ReadLine();
-            Console.Write("Enter Weapon Price: ");
-            int price = int.TryParse(Console.ReadLine(), out var p) ? p : 0;
-            Console.Write("Enter Weapon Base Damage: ");
-            int damage = int.TryParse(Console.ReadLine(), out var d) ? d : 0;
-
-            var newWeapon = new Weapon
-            {
-                name = name,
-                type = type,
-                price = price,
-                baseDamage = damage
-            };
+            var newWeapon = GetWeaponInput();
 
             var success = await apiClient.AddWeaponAsync(newWeapon);
             if (success)
+            {
                 Console.WriteLine(">> Weapon added successfully!");
+            }
             else
-                Console.WriteLine(">> Failed to add weapon.");
+            {
+                Console.WriteLine(">!!!> Failed to add weapon.");
+            }
 
             Console.Write("\n>> Press any key to continue...");
             Console.ReadKey();
@@ -105,7 +95,7 @@ namespace Tubes_KPL_Program.Menu
 
         private static async Task UpdateWeapon(WeaponClient apiClient)
         {
-            Console.Write("Enter Weapon ID to Update: ");
+            Console.Write(">> Enter Weapon ID to Update: ");
             if (int.TryParse(Console.ReadLine(), out int id))
             {
                 var existing = await apiClient.GetWeaponByIdAsync(id);
@@ -115,7 +105,7 @@ namespace Tubes_KPL_Program.Menu
                     var updatedWeapon = GetWeaponInput();
 
                     var success = await apiClient.UpdateWeaponAsync(id, updatedWeapon);
-                    Console.WriteLine(success ? "Weapon updated successfully!" : "Failed to update monster.");
+                    Console.WriteLine(success ? ">> Weapon updated successfully!" : ">!!!> Failed to update monster.");
                 }
                 else
                 {
@@ -124,31 +114,64 @@ namespace Tubes_KPL_Program.Menu
             }
             else
             {
-                Console.WriteLine("Invalid ID input.");
+                Console.WriteLine(">!!!> Invalid ID input.");
             }
-            Console.WriteLine("\nPress any key to continue...");
+            Console.WriteLine("\n>> Press any key to continue...");
             Console.ReadKey();
         }
 
         private static async Task DeleteWeapon(WeaponClient apiClient)
         {
-            Console.Write("Enter Weapon ID to Delete: ");
-            if (int.TryParse(Console.ReadLine(), out int id))
+            try
             {
-                var success = await apiClient.DeleteWeaponAsync(id);
-                Console.WriteLine(success ? "Weapon deleted successfully!" : "Failed to delete weapon.");
+                Console.Write(">> Enter Weapon ID to Delete: ");
+                if (int.TryParse(Console.ReadLine(), out int id))
+                {
+                    var weapon = await apiClient.GetWeaponByIdAsync(id);
+                    if (weapon == null)
+                    {
+                        Console.WriteLine(">> Weapon not found.");
+                    }
+                    else
+                    {
+                        string confirm;
+                        do
+                        {
+                            Console.WriteLine($">> Are you sure you want to delete '{weapon.name}'? (Y/N)");
+                            confirm = Console.ReadLine()?.Trim().ToUpper();
+                            if (confirm != "Y" && confirm != "N")
+                            {
+                                Console.WriteLine(">> Please enter 'Y' for Yes or 'N' for No.");
+                            }
+                        } while (confirm != "Y" && confirm != "N");
+
+                        if (confirm == "Y")
+                        {
+                            var success = await apiClient.DeleteWeaponAsync(id);
+                            Console.WriteLine(success ? ">> Weapon deleted successfully!" : ">!!!> Failed to delete weapon.");
+                        }
+                        else
+                        {
+                            Console.WriteLine(">> Delete operation canceled.");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine(">!!!> Invalid ID input.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine(">!!!> Invalid ID input.");
+                Console.WriteLine($">!!!> Error deleting weapon: {ex.Message}");
             }
-            Console.Write("\n> Press any key to continue...");
+            Console.Write("\n>> Press any key to continue...");
             Console.ReadKey();
         }
 
         private static async Task SearchWeapon(WeaponClient apiClient)
         {
-            Console.Write("Enter Weapon ID to Search: ");
+            Console.Write(">> Enter Weapon ID to Search: ");
             if (int.TryParse(Console.ReadLine(), out int id))
             {
                 var weapon = await apiClient.GetWeaponByIdAsync(id);
@@ -158,32 +181,28 @@ namespace Tubes_KPL_Program.Menu
                 }
                 else
                 {
-                    Console.WriteLine("Weapon not found.");
+                    Console.WriteLine(">> Weapon not found.");
                 }
             }
             else
             {
-                Console.WriteLine("Invalid ID input.");
+                Console.WriteLine(">!!!> Invalid ID input.");
             }
-            Console.WriteLine("\nPress any key to continue...");
+            Console.WriteLine("\n>> Press any key to continue...");
             Console.ReadKey();
         }
 
         private static Weapon GetWeaponInput()
         {
-            Console.Write("Enter Weapon Name: ");
-            var name = Console.ReadLine();
-            Console.Write("Enter Weapon Type: ");
-            var type = Console.ReadLine();
-            Console.Write("Enter Weapon Price: ");
-            int price = int.TryParse(Console.ReadLine(), out var p) ? p : 0;
-            Console.Write("Enter Weapon Base Damage: ");
-            int damage = int.TryParse(Console.ReadLine(), out var d) ? d : 0;
+            string name = ValidateString.GetValidatedString("Weapon Name");
+            string type = ValidateString.GetValidatedString("Weapon Type");
+            int price = ValidateInt.GetPositiveIntegerInput("Weapon Health");
+            int damage = ValidateInt.GetPositiveIntegerInput("Weapon Damage");
 
             return new Weapon
             {
-                name = name ?? "Unknown",
-                type = type ?? "Unknown",
+                name = name,
+                type = type,
                 price = price,
                 baseDamage = damage
             };
