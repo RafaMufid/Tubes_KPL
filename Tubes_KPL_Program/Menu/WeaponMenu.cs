@@ -196,7 +196,7 @@ namespace Tubes_KPL_Program.Menu
         {
             string name = ValidateString.GetValidatedString("Weapon Name");
             string type = ValidateString.GetValidatedString("Weapon Type");
-            int price = ValidateInt.GetPositiveIntegerInput("Weapon Health");
+            int price = ValidateInt.GetPositiveIntegerInput("Weapon Price");
             int damage = ValidateInt.GetPositiveIntegerInput("Weapon Damage");
 
             return new Weapon
