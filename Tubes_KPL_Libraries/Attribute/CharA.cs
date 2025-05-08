@@ -13,4 +13,17 @@
         public double getGold() => gold;
         public void setGold(double gold) => this.gold = gold;
     }
+    public class Charmons
+    {
+        public static readonly Random rng = new Random();
+        private int health = rng.Next(100,500);
+        public int getHealthmons()
+        {
+            return health;
+        }
+        public void setHealthmons(int health) {
+
+            this.health = health;
+        }
+    }
 }

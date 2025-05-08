@@ -36,7 +36,7 @@ class Program
                     break;
 
                 case "4":
-                    Battle.Start();
+                    await Battle.Start();
                     break;
 
                 case "0":
