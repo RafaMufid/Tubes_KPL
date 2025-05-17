@@ -20,13 +20,14 @@ namespace Tubes_KPL_Program.Menu
             while (!exit)
             {
                 Console.Clear();
-                Console.WriteLine("=== Weapon Console App ===");
+                Console.WriteLine("====== Weapon Compendium ======");
                 Console.WriteLine("1. List All Weapons");
                 Console.WriteLine("2. Add New Weapon");
                 Console.WriteLine("3. Update Existing Weapon");
                 Console.WriteLine("4. Delete Weapon");
                 Console.WriteLine("5. Search Weapon by ID");
-                Console.WriteLine("0. Exit");
+                Console.WriteLine("0. Back");
+                Console.WriteLine("===============================");
                 Console.Write(">> Choose an option: ");
                 var choice = Console.ReadLine();
 
@@ -51,7 +52,6 @@ namespace Tubes_KPL_Program.Menu
                         break;
 
                     case "0":
-                        Console.WriteLine("See you later!");
                         exit = true;
                         break;
 

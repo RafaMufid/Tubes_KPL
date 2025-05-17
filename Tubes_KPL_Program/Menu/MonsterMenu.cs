@@ -20,13 +20,14 @@ namespace Tubes_KPL_Program.Menu
             while (!exit)
             {
                 Console.Clear();
-                Console.WriteLine("=== Monster Console App ===");
+                Console.WriteLine("====== Monster Compendium ======");
                 Console.WriteLine("1. List All Monsters");
                 Console.WriteLine("2. Add New Monster");
                 Console.WriteLine("3. Update Existing Monster");
                 Console.WriteLine("4. Delete Monster");
                 Console.WriteLine("5. Search Monster by ID");
-                Console.WriteLine("0. Exit");
+                Console.WriteLine("0. Back");
+                Console.WriteLine("================================");
                 Console.Write(">> Choose an option: ");
                 var choice = Console.ReadLine();
 
@@ -51,7 +52,6 @@ namespace Tubes_KPL_Program.Menu
                         break;
 
                     case "0":
-                        Console.WriteLine("See you later!");
                         exit = true;
                         break;
 
