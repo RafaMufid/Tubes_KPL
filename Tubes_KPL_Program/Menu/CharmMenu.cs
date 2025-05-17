@@ -20,13 +20,14 @@ namespace Tubes_KPL_Program.Menu
             while (!exit)
             {
                 Console.Clear();
-                Console.WriteLine("=== Charm Console App ===");
+                Console.WriteLine("====== Charm Compendium ======");
                 Console.WriteLine("1. List All Charms");
                 Console.WriteLine("2. Add New Charm");
                 Console.WriteLine("3. Update Existing Charm");
                 Console.WriteLine("4. Delete Charm");
                 Console.WriteLine("5. Search Charm by ID");
-                Console.WriteLine("0. Exit");
+                Console.WriteLine("0. Back");
+                Console.WriteLine("==============================");
                 Console.Write(">> Choose an option: ");
                 var choice = Console.ReadLine();
 
@@ -51,7 +52,6 @@ namespace Tubes_KPL_Program.Menu
                         break;
 
                     case "0":
-                        Console.WriteLine("See you later!");
                         exit = true;
                         break;
 

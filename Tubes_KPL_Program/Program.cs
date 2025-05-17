@@ -13,29 +13,20 @@ class Program
         {
             Console.Clear();
             Console.WriteLine("=== Feature Test Console App ===");
-            Console.WriteLine("1. Monster Menu");
-            Console.WriteLine("2. Weapon Menu");
-            Console.WriteLine("3. Charm Menu");
-            Console.WriteLine("4. battle test");
+            Console.WriteLine("1. Compendium");
+            Console.WriteLine("2. battle test");
             Console.WriteLine("0. Exit");
+            Console.WriteLine("================================");
             Console.Write(">> Choose an option: ");
             var choice = Console.ReadLine();
 
             switch (choice)
             {
                 case "1":
-                    await MonsterMenu.Run();
+                    await Compendium.Run();
                     break;
 
                 case "2":
-                    await WeaponMenu.Run();
-                    break;
-
-                case "3":
-                    await CharmMenu.Run();
-                    break;
-
-                case "4":
                     await Battle.Start();
                     break;
 

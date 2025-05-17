@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Goblin",
     "health": 30,
-    "race": "Beast",
+    "race": "Goblin",
     "damage": 5
   },
   {
