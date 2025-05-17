@@ -8,7 +8,7 @@ using Tubes_KPL_Program.Model;
 
 namespace Tubes_KPL_Program.Service
 {
-    class MonsterClient
+    public class MonsterClient
     {
         private readonly HttpClient _client;
         private readonly string _baseUrl = "https://localhost:7095/api/Monster"; //target url API
