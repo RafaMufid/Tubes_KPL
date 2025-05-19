@@ -1,6 +1,6 @@
 ﻿namespace Tubes_KPL_Libraries.Attribute
 {
-    public class CharA
+    public class charactersAtribute
     {
         private int health = 100;
         private double gold;
