@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.Json;
+using Tubes_KPL_Program.Battle;
 
 namespace Tubes_KPL_Program.Merchant
 {
     public class Shop<T>
     {
         private List<T> items = new List<T>();
+        public inventory inven = new inventory();
+        private string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\data\localItem.json");
 
         public void AddItem(T item)
         {
@@ -23,12 +24,42 @@ namespace Tubes_KPL_Program.Merchant
             }
         }
 
-        public int ItemCount => items.Count;
-
-        public T GetItem(int index)
+        public void saveToLocal(string name)
         {
-            return items[index];
+            try
+            {
+                string json = File.ReadAllText(filePath);
+                List<string> LocalItems = JsonSerializer.Deserialize<List<string>>(json) ?? new List<string>();
+
+                // Check if item already exists
+                if (LocalItems.Any(item => string.Equals(item, name, StringComparison.OrdinalIgnoreCase)))
+                {
+                    Console.WriteLine($">!!!> Item {name} already exists in local items.");
+
+                    
+                        T RI = items.Find(x => x.Equals(name));
+                    
+                    RemoveItem(RI);
+                }
+                else
+                {
+                    LocalItems.Add(name);
+                    Console.WriteLine($">>> Item {name} added to local items.");
+                }
+
+                // Save updated list
+                string newJson = JsonSerializer.Serialize(LocalItems, new JsonSerializerOptions
+                {
+                    WriteIndented = true,
+                });
+                File.WriteAllText(filePath, newJson);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($">!!!> Error saving weapons: {ex.Message}");
+            }
         }
+
 
         public void RemoveItem(T item)
         {

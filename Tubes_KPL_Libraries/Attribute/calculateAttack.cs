@@ -7,7 +7,7 @@ using System;
 
 namespace Tubes_KPL_Libraries.Attribute
 {
-    public class AttackCal
+    public class calculateAttack
     {
         public static readonly Random rng = new Random();
 

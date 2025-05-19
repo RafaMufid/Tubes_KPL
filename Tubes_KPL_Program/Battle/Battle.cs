@@ -15,9 +15,9 @@ namespace Tubes_KPL_Program.Battle
 
         public static async Task Start()
         {
-            CharA player = new CharA();
+            charactersAtribute player = new charactersAtribute();
             Charmons mobs = new Charmons();
-            INV inv = new INV();
+            inventory inv = new inventory();
             State state = State.playerTurn;
             string[] screen = { "player Turn", "enemy Turn", "battle Over" };
 
@@ -32,7 +32,7 @@ namespace Tubes_KPL_Program.Battle
                         if (state == State.playerTurn)
                         {
 
-                            await inv.showINV();
+                            await inv.showItems();
 
                             int input = -1;
                             bool check = false;
@@ -43,8 +43,8 @@ namespace Tubes_KPL_Program.Battle
 
                                 if (input != -1)
                                 {
-                                    var weapon = await inv.GetWeapon(input);
-                                    mobs.setHealthmons(AttackCal.getDamage(mobs.getHealthmons(), weapon ));
+                                    var weapon = await inv.GetWeaponDamage(input);
+                                    mobs.setHealthmons(calculateAttack.getDamage(mobs.getHealthmons(), weapon ));
                                     Console.ReadKey();
                                     Console.Clear();
                                     if (mobs.getHealthmons() <= 0)
@@ -73,7 +73,7 @@ namespace Tubes_KPL_Program.Battle
                     case State.enemyTurn:
                         if (state == State.enemyTurn)
                         {
-                            player.setHealth(AttackCal.enemyDMG(player.getHealth()));
+                            player.setHealth(calculateAttack.enemyDMG(player.getHealth()));
                             Console.ReadKey();
                             Console.Clear();
                             if (player.getHealth() <= 0)

@@ -2,10 +2,11 @@
 
 using Tubes_KPL_Program.Battle;
 using Tubes_KPL_Program.Menu;
+using Tubes_KPL_Program.Merchant;
 
 class Program
 {
-    static async Task Main(string[] args)
+    public static async Task Main(string[] args)
     {
         bool exit = false;
 
@@ -15,6 +16,7 @@ class Program
             Console.WriteLine("=== Feature Test Console App ===");
             Console.WriteLine("1. Compendium");
             Console.WriteLine("2. battle test");
+            Console.WriteLine("3. shop test");
             Console.WriteLine("0. Exit");
             Console.WriteLine("================================");
             Console.Write(">> Choose an option: ");
@@ -28,6 +30,11 @@ class Program
 
                 case "2":
                     await Battle.Start();
+                    break;
+
+                case "3":
+                   ShopMenu shop = new ShopMenu();
+                    shop.showMenu();
                     break;
 
                 case "0":
