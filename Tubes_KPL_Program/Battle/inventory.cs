@@ -30,12 +30,12 @@ namespace Tubes_KPL_Program.Battle
             }
         }
 
-        public async Task<int> GetWeaponDamage(int id)
+        public async Task<int> GetWeaponDamage(string name)
         {
             var weapons = await senjata.GetAllWeaponsAsync();
             foreach (var weapon in weapons)
             {
-                if (weapon.id == id)
+                if (weapon.name.ToLower() == name.ToLower())
                 {
                     return weapon.baseDamage;
                 }
@@ -52,17 +52,16 @@ namespace Tubes_KPL_Program.Battle
 
                 var apiweapons = await senjata.GetAllWeaponsAsync();
 
-                Console.WriteLine("List of Weapons:");
+                Console.WriteLine("senjata yang ada:");
                 bool found = false;
 
                 if (LocalItems.Count == 0)
                 {
-                    Console.WriteLine(">!!!> Inventory is empty.");
+                    Console.WriteLine("Inventory kosong");
                 }
 
                 foreach (var item in LocalItems)
                 {
-                    Console.WriteLine($"Checking saved item: {item}");
                     var match = apiweapons.FirstOrDefault(w => string.Equals(w.name, item, StringComparison.OrdinalIgnoreCase));
 
                     if (match != null)
@@ -72,20 +71,20 @@ namespace Tubes_KPL_Program.Battle
                     }
                     else
                     {
-                        Console.WriteLine($">!!!> No matching weapon found for: {item}");
+                        Console.WriteLine($"tidak ada yang cocok dengan: {item}");
                     }
                 }
 
                 if (!found)
                 {
-                    Console.WriteLine(">!!!> Inventory is empty or no matching weapons found.");
+                    Console.WriteLine("Inventory kosong atau item tidak ditemukan");
                     Console.ReadKey();
                     Program.Main(new string[] { });
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($">!!!> Error fetching weapons: {ex.Message}");
+                Console.WriteLine($"gagal mengambil data items: {ex.Message}");
             }
         }
     }
