@@ -34,7 +34,7 @@ namespace Tubes_KPL_Program.Merchant
                 // Check if item already exists
                 if (LocalItems.Any(item => string.Equals(item, name, StringComparison.OrdinalIgnoreCase)))
                 {
-                    Console.WriteLine($">!!!> Item {name} already exists in local items.");
+                    Console.WriteLine($"Item {name} sudah ada di inventory.");
 
                     
                         T RI = items.Find(x => x.Equals(name));
@@ -44,7 +44,7 @@ namespace Tubes_KPL_Program.Merchant
                 else
                 {
                     LocalItems.Add(name);
-                    Console.WriteLine($">>> Item {name} added to local items.");
+                    Console.WriteLine($"Item {name} berhasil di tambahkan ke dalam inventory.");
                 }
 
                 // Save updated list
@@ -56,7 +56,7 @@ namespace Tubes_KPL_Program.Merchant
             }
             catch (Exception ex)
             {
-                Console.WriteLine($">!!!> Error saving weapons: {ex.Message}");
+                Console.WriteLine($"gagal melakukan save data items: {ex.Message}");
             }
         }
 

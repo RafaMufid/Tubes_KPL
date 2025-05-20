@@ -19,12 +19,13 @@ namespace Tubes_KPL_Program.Battle
             Charmons mobs = new Charmons();
             inventory inv = new inventory();
             State state = State.playerTurn;
-            string[] screen = { "player Turn", "enemy Turn", "battle Over" };
+            string[] screen = { "Player", "Musuh", "battle Over" };
 
 
             while (state != State.battleOver)
             {
-                Console.WriteLine(screen[(int)state]);
+                Console.Clear();
+                Console.WriteLine( "turn : " + screen[(int)state]);
                 Console.WriteLine("HP player: " + player.getHealth() + " || " + "HP musuh: " + mobs.getHealthmons());
                 switch (state)
                 {
@@ -34,16 +35,24 @@ namespace Tubes_KPL_Program.Battle
 
                             await inv.showItems();
 
-                            int input = -1;
+                            string input;
                             bool check = false;
                             do
                             {
-                                Console.WriteLine("Masukkan nomor pilihan (angka):");
-                                input = Convert.ToInt32(Console.ReadLine());
+                                Console.WriteLine("Masukkan nama senjata:");
+                                input = Console.ReadLine();
 
-                                if (input != -1)
+                                if (input !=  null)
                                 {
                                     var weapon = await inv.GetWeaponDamage(input);
+                                    if ( weapon == -1)
+                                    {
+                                        Console.WriteLine("input tidak valid");
+                                        input = null;
+                                        Console.ReadKey();
+                                        Console.Clear();
+                                        break;
+                                    }
                                     mobs.setHealthmons(calculateAttack.getDamage(mobs.getHealthmons(), weapon ));
                                     Console.ReadKey();
                                     Console.Clear();
@@ -66,7 +75,7 @@ namespace Tubes_KPL_Program.Battle
                                 {
                                     Console.WriteLine("Input tidak valid, masukkan angka yang sesuai.");
                                 }
-                            } while (input == -1);
+                            } while (input == null);
                         }
                         break;
 
