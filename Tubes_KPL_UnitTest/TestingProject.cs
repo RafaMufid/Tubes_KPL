@@ -1,10 +1,12 @@
-﻿using Tubes_KPL_Program.Model;
+﻿using Tubes_KPL_Libraries.Attribute;
+using Tubes_KPL_Program.Battle;
+using Tubes_KPL_Program.Model;
 using Tubes_KPL_Program.Service;
 
 namespace Tubes_KPL_UnitTest
 {
     [TestClass]
-    public class MonsterMenuTest
+    public class TestingProject
     {
         private MonsterClient _client;
 
@@ -63,5 +65,64 @@ namespace Tubes_KPL_UnitTest
             var result = await _client.DeleteMonsterAsync(-9999); // ID tidak mungkin ada
             Assert.IsFalse(result);
         }
+
+        [TestMethod]
+        public void DamageCalculation_ShouldReduceEnemyHealthCorrectly()
+        {
+            // Arrange
+            Charmons enemy = new Charmons();
+            int originalHealth = enemy.getHealthmons();
+            int weaponDamage = 25;
+
+            // Act
+            int updatedHealth = calculateAttack.getDamage(originalHealth, weaponDamage);
+            enemy.setHealthmons(updatedHealth);
+
+            // Assert
+            Assert.AreEqual(originalHealth - weaponDamage, enemy.getHealthmons());
+        }
+
+        [TestMethod]
+        public void EnemyAttack_ShouldReducePlayerHealth()
+        {
+            // Arrange
+            charactersAtribute player = new charactersAtribute();
+            int originalHealth = player.getHealth();
+
+            // Act
+            int newHealth = calculateAttack.enemyDMG(originalHealth);
+            player.setHealth(newHealth);
+
+            // Assert
+            Assert.IsTrue(newHealth < originalHealth);
+        }
+
+        [TestMethod]
+        public async Task Inventory_ShouldReturnMinusOne_WhenWeaponNotFound()
+        {
+            // Arrange
+            inventory inv = new inventory();
+
+            // Act
+            int damage = await inv.GetWeaponDamage("invalidWeapon");
+
+            // Assert
+            Assert.AreEqual(-1, damage);
+        }
+
+        [TestMethod]
+        public async Task Inventory_ShouldReturnPositiveDamage_WhenWeaponValid()
+        {
+            // Arrange
+            inventory inv = new inventory();
+            string validWeapon = "Pedang"; // Ganti dengan senjata valid di inventory kamu
+
+            // Act
+            int damage = await inv.GetWeaponDamage(validWeapon);
+
+            // Assert
+            Assert.IsTrue(damage > 0);
+        }
     }
+
 }
