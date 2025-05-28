@@ -19,6 +19,7 @@ class Program
             Console.WriteLine("1. Compendium");
             Console.WriteLine("2. battle test");
             Console.WriteLine("3. shop test");
+            Console.WriteLine("4. maze test");
             Console.WriteLine("0. Exit");
             Console.WriteLine("================================");
             Console.Write(">> Choose an option: ");
@@ -37,6 +38,11 @@ class Program
                 case "3":
                    ShopMenu shop = new ShopMenu();
                     shop.showMenu();
+                    break;
+
+                case "4":
+                    Maze maze = new Maze();
+                    maze.runMaze();   
                     break;
 
                 case "0":
