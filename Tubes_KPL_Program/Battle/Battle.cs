@@ -71,10 +71,6 @@ namespace Tubes_KPL_Program.Battle
                                         state = State.enemyTurn;
                                     }
                                 }
-                                else
-                                {
-                                    Console.WriteLine("Input tidak valid, masukkan angka yang sesuai.");
-                                }
                             } while (input == null);
                         }
                         break;
