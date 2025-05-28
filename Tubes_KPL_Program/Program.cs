@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using MazeEnumState;
 using Tubes_KPL_Program.Battle;
 using Tubes_KPL_Program.Menu;
 using Tubes_KPL_Program.Merchant;
@@ -18,6 +19,7 @@ class Program
             Console.WriteLine("1. Compendium");
             Console.WriteLine("2. battle test");
             Console.WriteLine("3. shop test");
+            Console.WriteLine("4. Maze test");
             Console.WriteLine("0. Exit");
             Console.WriteLine("================================");
             Console.Write(">> Choose an option: ");
@@ -36,6 +38,11 @@ class Program
                 case "3":
                    ShopMenu shop = new ShopMenu();
                     shop.showMenu();
+                    break;
+
+                case "4":
+                    Maze maze = new Maze();  
+                    maze.runMze();
                     break;
 
                 case "0":
