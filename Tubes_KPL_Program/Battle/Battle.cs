@@ -39,7 +39,7 @@ namespace Tubes_KPL_Program.Battle
                             bool check = false;
                             do
                             {
-                                Console.WriteLine("Masukkan nama senjata:");
+                                Console.WriteLine("Masukkan nama senjata atau exit untuk keluar:");
                                 input = Console.ReadLine();
 
                                 if (input != "exit")

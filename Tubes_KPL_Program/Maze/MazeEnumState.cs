@@ -7,7 +7,7 @@ namespace MazeEnumState
         // Definisikan semua state sebagai enum
         enum State { Maze, A, B, C, D, E, F, G, H, I }
 
-       public void runMze()
+        static void Main()
         {
             State currentState = State.Maze;
             string input;
