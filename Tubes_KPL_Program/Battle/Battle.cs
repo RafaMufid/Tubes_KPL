@@ -39,13 +39,13 @@ namespace Tubes_KPL_Program.Battle
                             bool check = false;
                             do
                             {
-                                Console.WriteLine("Masukkan nama senjata:");
+                                Console.WriteLine("Masukkan nama senjata atau exit untuk keluar:");
                                 input = Console.ReadLine();
 
-                                if (input !=  null)
+                                if (input != "exit")
                                 {
                                     var weapon = await inv.GetWeaponDamage(input);
-                                    if ( weapon == -1)
+                                    if (weapon == -1)
                                     {
                                         Console.WriteLine("input tidak valid");
                                         input = null;
@@ -53,7 +53,7 @@ namespace Tubes_KPL_Program.Battle
                                         Console.Clear();
                                         break;
                                     }
-                                    mobs.setHealthmons(calculateAttack.getDamage(mobs.getHealthmons(), weapon ));
+                                    mobs.setHealthmons(calculateAttack.getDamage(mobs.getHealthmons(), weapon));
                                     Console.ReadKey();
                                     Console.Clear();
                                     if (mobs.getHealthmons() <= 0)
@@ -70,6 +70,14 @@ namespace Tubes_KPL_Program.Battle
                                         Console.Clear();
                                         state = State.enemyTurn;
                                     }
+                                }
+                                else if (input == "exit")
+                                {
+                                    Console.WriteLine("keluar dari battle");
+                                    Console.ReadKey();
+                                    Console.Clear();
+                                    state = State.battleOver;
+                                    break;
                                 }
                             } while (input == null);
                         }

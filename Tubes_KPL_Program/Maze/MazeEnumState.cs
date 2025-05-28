@@ -2,12 +2,12 @@
 
 namespace MazeEnumState
 {
-    class Program
+    public class Maze
     {
         // Definisikan semua state sebagai enum
         enum State { Maze, A, B, C, D, E, F, G, H, I }
 
-        static void Main()
+        public void runMaze()
         {
             State currentState = State.Maze;
             string input;
