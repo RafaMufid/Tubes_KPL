@@ -115,7 +115,7 @@ namespace Tubes_KPL_UnitTest
         {
             // Arrange
             inventory inv = new inventory();
-            string validWeapon = "Pedang"; // Ganti dengan senjata valid di inventory kamu
+            string validWeapon = "Excalibur"; // Ganti dengan senjata valid di inventory kamu
 
             // Act
             int damage = await inv.GetWeaponDamage(validWeapon);
