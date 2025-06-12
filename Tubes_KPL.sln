@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tubes_KPL_UnitTest", "Tubes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tubes_KPL_GUI", "Tubes_KPL_GUI\Tubes_KPL_GUI.csproj", "{B45CB34D-DA77-4927-9704-3EF9D72E7D2E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tubes_KPL_GUI8.0", "Tubes_KPL_GUI8.0\Tubes_KPL_GUI8.0.csproj", "{66D1A4B1-02E6-44E0-BBC5-DA54A671C75D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{B45CB34D-DA77-4927-9704-3EF9D72E7D2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B45CB34D-DA77-4927-9704-3EF9D72E7D2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B45CB34D-DA77-4927-9704-3EF9D72E7D2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66D1A4B1-02E6-44E0-BBC5-DA54A671C75D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66D1A4B1-02E6-44E0-BBC5-DA54A671C75D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66D1A4B1-02E6-44E0-BBC5-DA54A671C75D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66D1A4B1-02E6-44E0-BBC5-DA54A671C75D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
