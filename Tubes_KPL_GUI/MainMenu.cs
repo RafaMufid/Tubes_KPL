@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Tubes_KPL_GUI
 {
-    public partial class Form1: Form
+    public partial class MainMenu: Form
     {
-        public Form1()
+        public MainMenu()
         {
             InitializeComponent();
         }
@@ -39,7 +39,7 @@ namespace Tubes_KPL_GUI
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }

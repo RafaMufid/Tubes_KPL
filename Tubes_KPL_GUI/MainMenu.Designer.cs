@@ -2,7 +2,7 @@
 
 namespace Tubes_KPL_GUI
 {
-    partial class Form1
+    partial class MainMenu
     {
         /// <summary>
         /// Required designer variable.
