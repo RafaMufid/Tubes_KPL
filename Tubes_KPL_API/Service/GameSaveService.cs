@@ -5,6 +5,13 @@ namespace Tubes_KPL_API.Service
 {
     public class GameSaveService
     {
+        private readonly IGameSave _factory;
+
+        public GameSaveService(IGameSave factory)
+        {
+            _factory = factory;
+        }
+
         private string GetSaveFilePath(int slot)
         {
             return $"SaveFiles/savegame_slot{slot}.json";
@@ -31,29 +38,21 @@ namespace Tubes_KPL_API.Service
             catch (Exception ex)
             {
                 Console.WriteLine($"[LoadGame] Terjadi kesalahan saat memuat game: {ex.Message}");
-                return null; // Atau bisa lempar ulang jika ingin dibiarkan naik ke controller
+                return null; 
             }
         }
 
-        public void SaveGame(GameState state, int slot)
+        public void SaveGame(string playerName, int idDialog, int slot)
         {
             try
             {
-                if (state == null)
-                    throw new ArgumentNullException(nameof(state), "Data game tidak boleh null.");
-
-                if (slot < 0)
-                    throw new ArgumentOutOfRangeException(nameof(slot), "Nomor slot harus bernilai 0 atau lebih.");
-
-                if (string.IsNullOrWhiteSpace(state.PlayerName))
-                    throw new ArgumentException("Nama pemain tidak boleh kosong.", nameof(state.PlayerName));
+                if (string.IsNullOrWhiteSpace(playerName))
+                    throw new ArgumentException("Nama pemain tidak boleh kosong.");
 
                 Directory.CreateDirectory("SaveFiles");
-                var json = JsonSerializer.Serialize(state, new JsonSerializerOptions { WriteIndented = true });
+                var gameState = _factory.CreateGameState(playerName, idDialog, slot);
+                var json = JsonSerializer.Serialize(gameState, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(GetSaveFilePath(slot), json);
-
-                if (!File.Exists(GetSaveFilePath(slot)))
-                    throw new InvalidOperationException("Gagal menyimpan game: file tidak berhasil dibuat.");
             }
             catch (Exception ex)
             {
