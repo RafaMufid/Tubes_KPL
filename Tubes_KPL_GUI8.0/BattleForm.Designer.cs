@@ -1,0 +1,98 @@
+﻿namespace Tubes_KPL_GUI8._0
+{
+    partial class BattleForm
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            BattleTurn = new Label();
+            PlayerHP = new Label();
+            EnemyHP = new Label();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
+            // 
+            // BattleTurn
+            // 
+            BattleTurn.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BattleTurn.Location = new Point(22, 25);
+            BattleTurn.Name = "BattleTurn";
+            BattleTurn.Size = new Size(205, 33);
+            BattleTurn.TabIndex = 0;
+            BattleTurn.Text = "Battle Turn : ";
+            // 
+            // PlayerHP
+            // 
+            PlayerHP.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            PlayerHP.Location = new Point(58, 386);
+            PlayerHP.Name = "PlayerHP";
+            PlayerHP.Size = new Size(149, 28);
+            PlayerHP.TabIndex = 1;
+            PlayerHP.Text = "Player HP :";
+            // 
+            // EnemyHP
+            // 
+            EnemyHP.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            EnemyHP.Location = new Point(658, 133);
+            EnemyHP.Name = "EnemyHP";
+            EnemyHP.Size = new Size(143, 30);
+            EnemyHP.TabIndex = 2;
+            EnemyHP.Text = "Enemy HP :";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Black;
+            pictureBox1.Location = new Point(-3, 367);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(949, 199);
+            pictureBox1.TabIndex = 3;
+            pictureBox1.TabStop = false;
+            // 
+            // BattleForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.battleback10;
+            ClientSize = new Size(944, 561);
+            Controls.Add(EnemyHP);
+            Controls.Add(PlayerHP);
+            Controls.Add(BattleTurn);
+            Controls.Add(pictureBox1);
+            Name = "BattleForm";
+            Text = "Form2";
+            Load += BattleForm_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+        }
+
+        #endregion
+
+        private Label BattleTurn;
+        private Label PlayerHP;
+        private Label EnemyHP;
+        private PictureBox pictureBox1;
+    }
+}
