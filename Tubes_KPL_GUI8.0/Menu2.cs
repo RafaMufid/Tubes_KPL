@@ -24,7 +24,9 @@ namespace Tubes_KPL_GUI8._0
 
         private void buttonBattle_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+            BattleForm battle = new BattleForm();
+            battle.ShowDialog();
         }
 
         private void buttonCompendium_Click(object sender, EventArgs e)
