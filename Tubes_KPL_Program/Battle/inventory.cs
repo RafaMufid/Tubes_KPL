@@ -30,7 +30,7 @@ namespace Tubes_KPL_Program.Battle
             }
         }
 
-        public async Task<string> GetWeaponNames()
+        public async Task<List<string>> GetWeaponNames()
         {
             try
             {
@@ -38,6 +38,7 @@ namespace Tubes_KPL_Program.Battle
                 List<string> LocalItems = JsonSerializer.Deserialize<List<string>>(json) ?? new List<string>();
 
                 var apiweapons = await senjata.GetAllWeaponsAsync();
+                List<string> weaponInfoList = new List<string>();
 
                 foreach (string item in LocalItems)
                 {
@@ -46,18 +47,16 @@ namespace Tubes_KPL_Program.Battle
                     if (match != null)
                     {
                         var weaponInfo = $"[{match.id}] Name: {match.name} | Type: {match.type} | Damage: {match.baseDamage}";
-                        return weaponInfo; // return the first matching weapon info
+                        weaponInfoList.Add(weaponInfo);
                     }
                 }
-
-                return null; // explicitly return null if no match is found
+                return weaponInfoList;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                Console.WriteLine($"Error getting weapon names for GUI: {ex.Message}");
+                return new List<string>();
             }
-
-            return null; // ensure all code paths return a value
         }
 
         public async Task<int> GetWeaponDamage(string name)

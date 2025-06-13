@@ -80,14 +80,14 @@
             // lstInventory
             // 
             lstInventory.ItemHeight = 15;
-            lstInventory.Location = new Point(301, 386);
+            lstInventory.Location = new Point(244, 386);
             lstInventory.Name = "lstInventory";
-            lstInventory.Size = new Size(200, 139);
+            lstInventory.Size = new Size(459, 139);
             lstInventory.TabIndex = 0;
             // 
             // AttackButton
             // 
-            AttackButton.Location = new Point(559, 461);
+            AttackButton.Location = new Point(771, 433);
             AttackButton.Name = "AttackButton";
             AttackButton.Size = new Size(123, 38);
             AttackButton.TabIndex = 4;
@@ -97,7 +97,7 @@
             // 
             // RunButton
             // 
-            RunButton.Location = new Point(732, 461);
+            RunButton.Location = new Point(771, 487);
             RunButton.Name = "RunButton";
             RunButton.Size = new Size(123, 38);
             RunButton.TabIndex = 5;
@@ -107,7 +107,7 @@
             // 
             // txtWeaponName
             // 
-            txtWeaponName.Location = new Point(559, 408);
+            txtWeaponName.Location = new Point(744, 386);
             txtWeaponName.Name = "txtWeaponName";
             txtWeaponName.Size = new Size(150, 23);
             txtWeaponName.TabIndex = 0;
