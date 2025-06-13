@@ -10,28 +10,28 @@ using System.Windows.Forms;
 
 namespace Tubes_KPL_GUI8._0
 {
-    public partial class Menu2 : Form
+    public partial class Compendium : Form
     {
-        public Menu2()
+        public Compendium()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonMonster_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void buttonBattle_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonCompendium_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            Compendium comp = new Compendium();
-            comp.ShowDialog();
+            //Menu2 menu2 = new Menu2();
+            //menu2.ShowDialog();
         }
     }
 }
