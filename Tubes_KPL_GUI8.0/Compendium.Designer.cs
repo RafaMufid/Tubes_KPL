@@ -33,6 +33,7 @@
             buttonMonster = new Button();
             buttonWeapon = new Button();
             buttonCharm = new Button();
+            buttonBack = new Button();
             SuspendLayout();
             // 
             // label1
@@ -40,7 +41,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Papyrus", 36F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label1.Location = new Point(122, 69);
+            label1.Location = new Point(122, 96);
             label1.Name = "label1";
             label1.Size = new Size(716, 94);
             label1.TabIndex = 0;
@@ -84,6 +85,19 @@
             buttonCharm.Text = "Charms";
             buttonCharm.UseVisualStyleBackColor = false;
             // 
+            // buttonBack
+            // 
+            buttonBack.BackColor = Color.Tan;
+            buttonBack.FlatStyle = FlatStyle.Popup;
+            buttonBack.Font = new Font("Modern No. 20", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonBack.Location = new Point(77, 473);
+            buttonBack.Name = "buttonBack";
+            buttonBack.Size = new Size(94, 29);
+            buttonBack.TabIndex = 4;
+            buttonBack.Text = "Back";
+            buttonBack.UseVisualStyleBackColor = false;
+            buttonBack.Click += buttonBack_Click;
+            // 
             // Compendium
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -91,6 +105,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(942, 553);
+            Controls.Add(buttonBack);
             Controls.Add(buttonCharm);
             Controls.Add(buttonWeapon);
             Controls.Add(buttonMonster);
@@ -108,5 +123,6 @@
         private Button buttonMonster;
         private Button buttonWeapon;
         private Button buttonCharm;
+        private Button buttonBack;
     }
 }

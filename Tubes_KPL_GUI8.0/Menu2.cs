@@ -24,7 +24,14 @@ namespace Tubes_KPL_GUI8._0
 
         private void buttonBattle_Click(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void buttonCompendium_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Compendium comp = new Compendium();
+            comp.ShowDialog();
         }
     }
 }

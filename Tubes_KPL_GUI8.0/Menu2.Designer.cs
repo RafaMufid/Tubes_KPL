@@ -42,9 +42,9 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Viner Hand ITC", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.Transparent;
-            label1.Location = new Point(52, 44);
+            label1.Location = new Point(59, 59);
             label1.Name = "label1";
-            label1.Size = new Size(225, 52);
+            label1.Size = new Size(279, 65);
             label1.TabIndex = 0;
             label1.Text = "Test Features";
             // 
@@ -54,13 +54,13 @@
             buttonCompendium.FlatStyle = FlatStyle.Popup;
             buttonCompendium.Font = new Font("Modern No. 20", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             buttonCompendium.ForeColor = Color.Transparent;
-            buttonCompendium.Location = new Point(119, 120);
-            buttonCompendium.Margin = new Padding(3, 2, 3, 2);
+            buttonCompendium.Location = new Point(136, 160);
             buttonCompendium.Name = "buttonCompendium";
-            buttonCompendium.Size = new Size(112, 24);
+            buttonCompendium.Size = new Size(128, 32);
             buttonCompendium.TabIndex = 1;
             buttonCompendium.Text = "Compendium";
             buttonCompendium.UseVisualStyleBackColor = false;
+            buttonCompendium.Click += buttonCompendium_Click;
             // 
             // buttonBattle
             // 
@@ -68,10 +68,9 @@
             buttonBattle.FlatStyle = FlatStyle.Popup;
             buttonBattle.Font = new Font("Modern No. 20", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             buttonBattle.ForeColor = Color.Transparent;
-            buttonBattle.Location = new Point(140, 150);
-            buttonBattle.Margin = new Padding(3, 2, 3, 2);
+            buttonBattle.Location = new Point(160, 200);
             buttonBattle.Name = "buttonBattle";
-            buttonBattle.Size = new Size(70, 21);
+            buttonBattle.Size = new Size(80, 28);
             buttonBattle.TabIndex = 2;
             buttonBattle.Text = "Battle";
             buttonBattle.UseVisualStyleBackColor = false;
@@ -83,10 +82,9 @@
             buttonShop.FlatStyle = FlatStyle.Popup;
             buttonShop.Font = new Font("Modern No. 20", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             buttonShop.ForeColor = Color.Transparent;
-            buttonShop.Location = new Point(140, 177);
-            buttonShop.Margin = new Padding(3, 2, 3, 2);
+            buttonShop.Location = new Point(160, 236);
             buttonShop.Name = "buttonShop";
-            buttonShop.Size = new Size(70, 21);
+            buttonShop.Size = new Size(80, 28);
             buttonShop.TabIndex = 3;
             buttonShop.Text = "Shop";
             buttonShop.UseVisualStyleBackColor = false;
@@ -97,10 +95,9 @@
             buttonMaze.FlatStyle = FlatStyle.Popup;
             buttonMaze.Font = new Font("Modern No. 20", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             buttonMaze.ForeColor = Color.Transparent;
-            buttonMaze.Location = new Point(140, 204);
-            buttonMaze.Margin = new Padding(3, 2, 3, 2);
+            buttonMaze.Location = new Point(160, 272);
             buttonMaze.Name = "buttonMaze";
-            buttonMaze.Size = new Size(70, 21);
+            buttonMaze.Size = new Size(80, 28);
             buttonMaze.TabIndex = 4;
             buttonMaze.Text = "Maze";
             buttonMaze.UseVisualStyleBackColor = false;
@@ -111,10 +108,9 @@
             buttonBack.FlatStyle = FlatStyle.Popup;
             buttonBack.Font = new Font("Modern No. 20", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0);
             buttonBack.ForeColor = Color.Transparent;
-            buttonBack.Location = new Point(10, 9);
-            buttonBack.Margin = new Padding(3, 2, 3, 2);
+            buttonBack.Location = new Point(11, 12);
             buttonBack.Name = "buttonBack";
-            buttonBack.Size = new Size(52, 21);
+            buttonBack.Size = new Size(59, 28);
             buttonBack.TabIndex = 5;
             buttonBack.Text = "Back";
             buttonBack.UseVisualStyleBackColor = false;
@@ -122,17 +118,17 @@
             // 
             // Menu2
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Maroon;
-            ClientSize = new Size(334, 265);
+            ClientSize = new Size(382, 353);
             Controls.Add(buttonBack);
             Controls.Add(buttonMaze);
             Controls.Add(buttonShop);
             Controls.Add(buttonBattle);
             Controls.Add(buttonCompendium);
             Controls.Add(label1);
-            Margin = new Padding(3, 2, 3, 2);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Menu2";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Settings";

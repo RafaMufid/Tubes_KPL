@@ -26,5 +26,12 @@ namespace Tubes_KPL_GUI8._0
         {
 
         }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            //Menu2 menu2 = new Menu2();
+            //menu2.ShowDialog();
+        }
     }
 }
