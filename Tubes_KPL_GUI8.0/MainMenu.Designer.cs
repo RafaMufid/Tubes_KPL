@@ -31,9 +31,8 @@
             labelTitle = new Label();
             labelSubTitle = new Label();
             buttonStart = new Button();
-            buttonSettings = new Button();
-            buttonExit = new Button();
             buttonCredits = new Button();
+            buttonExit = new Button();
             SuspendLayout();
             // 
             // labelTitle
@@ -74,20 +73,22 @@
             buttonStart.TabIndex = 2;
             buttonStart.Text = "START";
             buttonStart.UseVisualStyleBackColor = false;
+            buttonStart.Click += buttonStart_Click;
             // 
-            // buttonSettings
+            // buttonCredits
             // 
-            buttonSettings.BackColor = Color.Maroon;
-            buttonSettings.FlatStyle = FlatStyle.Popup;
-            buttonSettings.Font = new Font("Viner Hand ITC", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonSettings.ForeColor = Color.White;
-            buttonSettings.Location = new Point(232, 312);
-            buttonSettings.Margin = new Padding(3, 4, 3, 4);
-            buttonSettings.Name = "buttonSettings";
-            buttonSettings.Size = new Size(137, 43);
-            buttonSettings.TabIndex = 3;
-            buttonSettings.Text = "SETTINGS";
-            buttonSettings.UseVisualStyleBackColor = false;
+            buttonCredits.BackColor = Color.Maroon;
+            buttonCredits.FlatStyle = FlatStyle.Popup;
+            buttonCredits.Font = new Font("Viner Hand ITC", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonCredits.ForeColor = Color.White;
+            buttonCredits.Location = new Point(232, 312);
+            buttonCredits.Margin = new Padding(3, 4, 3, 4);
+            buttonCredits.Name = "buttonCredits";
+            buttonCredits.Size = new Size(137, 43);
+            buttonCredits.TabIndex = 3;
+            buttonCredits.Text = "CREDITS";
+            buttonCredits.UseVisualStyleBackColor = false;
+            buttonCredits.Click += buttonCredit_Click;
             // 
             // buttonExit
             // 
@@ -104,36 +105,24 @@
             buttonExit.UseVisualStyleBackColor = false;
             buttonExit.Click += buttonExit_Click;
             // 
-            // buttonCredits
-            // 
-            buttonCredits.BackColor = Color.Transparent;
-            buttonCredits.FlatStyle = FlatStyle.Popup;
-            buttonCredits.Font = new Font("Modern No. 20", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonCredits.ForeColor = Color.White;
-            buttonCredits.Location = new Point(813, 492);
-            buttonCredits.Margin = new Padding(2, 3, 2, 3);
-            buttonCredits.Name = "buttonCredits";
-            buttonCredits.Size = new Size(101, 37);
-            buttonCredits.TabIndex = 5;
-            buttonCredits.Text = "CREDITS";
-            buttonCredits.UseVisualStyleBackColor = false;
-            buttonCredits.Click += buttonCredits_Click;
-            // 
             // MainMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.background;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(942, 553);
-            Controls.Add(buttonCredits);
             Controls.Add(buttonExit);
-            Controls.Add(buttonSettings);
+            Controls.Add(buttonCredits);
             Controls.Add(buttonStart);
             Controls.Add(labelSubTitle);
             Controls.Add(labelTitle);
+            DoubleBuffered = true;
             Margin = new Padding(3, 4, 3, 4);
             Name = "MainMenu";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "MainMenu";
+            Load += MainMenu_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -143,8 +132,7 @@
         private Label labelTitle;
         private Label labelSubTitle;
         private Button buttonStart;
-        private Button buttonSettings;
-        private Button buttonExit;
         private Button buttonCredits;
+        private Button buttonExit;
     }
 }
