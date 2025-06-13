@@ -37,8 +37,9 @@
             labelHealth = new Label();
             labelRace = new Label();
             labelDamage = new Label();
-            button1 = new Button();
-            button2 = new Button();
+            buttonFiend = new Button();
+            buttonDragon = new Button();
+            buttonBack = new Button();
             SuspendLayout();
             // 
             // labelMonster
@@ -130,27 +131,42 @@
             labelDamage.Text = "Damage : ";
             labelDamage.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // button1
+            // buttonFiend
             // 
-            button1.BackgroundImage = Properties.Resources.Fiend;
-            button1.BackgroundImageLayout = ImageLayout.Stretch;
-            button1.Location = new Point(461, 159);
-            button1.Name = "button1";
-            button1.Size = new Size(160, 160);
-            button1.TabIndex = 8;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            buttonFiend.BackgroundImage = Properties.Resources.Fiend;
+            buttonFiend.BackgroundImageLayout = ImageLayout.Stretch;
+            buttonFiend.Location = new Point(461, 159);
+            buttonFiend.Name = "buttonFiend";
+            buttonFiend.Size = new Size(160, 160);
+            buttonFiend.TabIndex = 8;
+            buttonFiend.Text = "button1";
+            buttonFiend.UseVisualStyleBackColor = true;
+            buttonFiend.Click += buttonFiend_Click;
             // 
-            // button2
+            // buttonDragon
             // 
-            button2.BackgroundImage = Properties.Resources.Dragon;
-            button2.BackgroundImageLayout = ImageLayout.Stretch;
-            button2.Location = new Point(269, 159);
-            button2.Name = "button2";
-            button2.Size = new Size(160, 160);
-            button2.TabIndex = 9;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            buttonDragon.BackgroundImage = Properties.Resources.Dragon;
+            buttonDragon.BackgroundImageLayout = ImageLayout.Stretch;
+            buttonDragon.Location = new Point(269, 159);
+            buttonDragon.Name = "buttonDragon";
+            buttonDragon.Size = new Size(160, 160);
+            buttonDragon.TabIndex = 9;
+            buttonDragon.Text = "button2";
+            buttonDragon.UseVisualStyleBackColor = true;
+            buttonDragon.Click += buttonDragon_Click;
+            // 
+            // buttonBack
+            // 
+            buttonBack.BackColor = Color.Tan;
+            buttonBack.FlatStyle = FlatStyle.Popup;
+            buttonBack.Font = new Font("Modern No. 20", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonBack.Location = new Point(83, 89);
+            buttonBack.Name = "buttonBack";
+            buttonBack.Size = new Size(94, 29);
+            buttonBack.TabIndex = 10;
+            buttonBack.Text = "Back";
+            buttonBack.UseVisualStyleBackColor = false;
+            buttonBack.Click += buttonBack_Click;
             // 
             // Monsters
             // 
@@ -159,8 +175,9 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(942, 553);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(buttonBack);
+            Controls.Add(buttonDragon);
+            Controls.Add(buttonFiend);
             Controls.Add(labelDamage);
             Controls.Add(labelRace);
             Controls.Add(labelHealth);
@@ -184,7 +201,8 @@
         private Label labelHealth;
         private Label labelRace;
         private Label labelDamage;
-        private Button button1;
-        private Button button2;
+        private Button buttonFiend;
+        private Button buttonDragon;
+        private Button buttonBack;
     }
 }
