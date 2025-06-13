@@ -8,22 +8,27 @@ namespace Tubes_KPL_API.Controller
     [Route("api/[controller]")]
     public class GameSaveController : ControllerBase
     {
-        private readonly GameSaveService _service = new();
+        private readonly GameSaveService _service;
+
+        public GameSaveController()
+        {
+            _service = new GameSaveService(new GameSave());
+        }
 
         [HttpGet("{slot}")]
         public ActionResult<GameState> LoadGame(int slot)
         {
             var state = _service.LoadGame(slot);
             if (state == null)
-                return NotFound($"No save found for slot {slot}");
+                return NotFound($"Tidak menemukan save file untuk slot {slot}");
             return Ok(state);
         }
 
         [HttpPost("{slot}")]
         public IActionResult SaveGame(int slot, [FromBody] GameState state)
         {
-            _service.SaveGame(state, slot);
-            return Ok("Game saved successfully");
+            _service.SaveGame(state.PlayerName, state.IDDialog, slot);
+            return Ok("Game saved berhasil disimpan");
         }
 
         [HttpDelete("{slot}")]
@@ -31,9 +36,9 @@ namespace Tubes_KPL_API.Controller
         {
             bool deleted = _service.DeleteSave(slot);
             if (!deleted)
-                return NotFound($"No save file found in slot {slot} to delete.");
+                return NotFound($"tidak ditemukan file save {slot} untuk dihapus.");
 
-            return Ok($"Save slot {slot} deleted.");
+            return Ok($"Save slot {slot} berhasil dihapus.");
         }
 
     }
