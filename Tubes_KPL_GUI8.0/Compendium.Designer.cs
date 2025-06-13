@@ -63,9 +63,10 @@
             // 
             // buttonWeapon
             // 
-            buttonWeapon.BackColor = Color.Tan;
+            buttonWeapon.BackColor = Color.PapayaWhip;
             buttonWeapon.FlatStyle = FlatStyle.Popup;
             buttonWeapon.Font = new Font("Modern No. 20", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonWeapon.ForeColor = Color.Silver;
             buttonWeapon.Location = new Point(380, 218);
             buttonWeapon.Name = "buttonWeapon";
             buttonWeapon.Size = new Size(200, 200);
@@ -75,9 +76,10 @@
             // 
             // buttonCharm
             // 
-            buttonCharm.BackColor = Color.Tan;
+            buttonCharm.BackColor = Color.PapayaWhip;
             buttonCharm.FlatStyle = FlatStyle.Popup;
             buttonCharm.Font = new Font("Modern No. 20", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonCharm.ForeColor = Color.Silver;
             buttonCharm.Location = new Point(640, 218);
             buttonCharm.Name = "buttonCharm";
             buttonCharm.Size = new Size(200, 200);
