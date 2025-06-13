@@ -31,9 +31,12 @@ namespace Tubes_KPL_GUI8._0
 
         private void buttonCompendium_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Compendium comp = new Compendium();
-            comp.ShowDialog();
+            using (Compendium comp = new Compendium())
+            {
+                this.Hide(); // Sembunyikan form Menu2 sementara
+                comp.ShowDialog();
+                this.Show(); // Tampilkan kembali form Menu2 setelah Compendium ditutup
+            }
         }
     }
 }

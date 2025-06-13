@@ -47,7 +47,7 @@
             labelMonster.AutoSize = true;
             labelMonster.BackColor = Color.Transparent;
             labelMonster.Font = new Font("Papyrus", 28.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            labelMonster.Location = new Point(337, 71);
+            labelMonster.Location = new Point(358, 71);
             labelMonster.Name = "labelMonster";
             labelMonster.Size = new Size(237, 74);
             labelMonster.TabIndex = 1;
@@ -62,7 +62,7 @@
             buttonGoblin.BackColor = Color.Transparent;
             buttonGoblin.BackgroundImage = Properties.Resources.Goblin;
             buttonGoblin.BackgroundImageLayout = ImageLayout.Stretch;
-            buttonGoblin.Location = new Point(83, 159);
+            buttonGoblin.Location = new Point(114, 159);
             buttonGoblin.Name = "buttonGoblin";
             buttonGoblin.Size = new Size(160, 160);
             buttonGoblin.TabIndex = 2;
@@ -135,7 +135,7 @@
             // 
             buttonFiend.BackgroundImage = Properties.Resources.Fiend;
             buttonFiend.BackgroundImageLayout = ImageLayout.Stretch;
-            buttonFiend.Location = new Point(461, 159);
+            buttonFiend.Location = new Point(672, 159);
             buttonFiend.Name = "buttonFiend";
             buttonFiend.Size = new Size(160, 160);
             buttonFiend.TabIndex = 8;
@@ -147,7 +147,7 @@
             // 
             buttonDragon.BackgroundImage = Properties.Resources.Dragon;
             buttonDragon.BackgroundImageLayout = ImageLayout.Stretch;
-            buttonDragon.Location = new Point(269, 159);
+            buttonDragon.Location = new Point(394, 159);
             buttonDragon.Name = "buttonDragon";
             buttonDragon.Size = new Size(160, 160);
             buttonDragon.TabIndex = 9;
