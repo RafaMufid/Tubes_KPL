@@ -21,5 +21,10 @@ namespace Tubes_KPL_GUI8._0
         {
             this.Close();
         }
+
+        private void buttonBattle_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
