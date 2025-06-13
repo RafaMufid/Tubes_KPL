@@ -34,30 +34,29 @@ namespace Tubes_KPL_GUI8._0
 
         private async Task LoadInventory()
         {
-            lstInventory.Items.Clear(); // Clear the list before loading new items
+            lstInventory.Items.Clear();
 
             try
             {
-                string weapons = await inv.GetWeaponNames(); // Ensure this returns a collection like List<string> or similar
+                List<string> weaponsInfo = await inv.GetWeaponNames();
 
-                if (weapons == null) // Fix: Check if weapons is null or empty
+                if (weaponsInfo == null || weaponsInfo.Count == 0)
                 {
-                    lstInventory.Items.Add ("No weapons found in inventory.");
+                    lstInventory.Items.Add("No weapons found in inventory.");
                     return;
                 }
 
-                while (weapons != null)
+                foreach (string weaponDisplayString in weaponsInfo)
                 {
-                    lstInventory.Items.Add(weapons);
+                    lstInventory.Items.Add(weaponDisplayString);
                 }
-
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error to get data inventory: " + ex.Message);
+                MessageBox.Show("Error loading inventory data: " + ex.Message, "Inventory Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
 
         private void UpdateUI()
         {
