@@ -56,7 +56,7 @@ namespace Tubes_KPL_GUI8._0
                 MessageBox.Show("Error loading inventory data: " + ex.Message, "Inventory Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
 
         private void UpdateUI()
         {
@@ -137,5 +137,9 @@ namespace Tubes_KPL_GUI8._0
             this.Close();
         }
 
+        private void lstInventory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

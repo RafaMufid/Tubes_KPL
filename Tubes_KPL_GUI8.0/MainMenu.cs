@@ -40,6 +40,7 @@ namespace Tubes_KPL_GUI8._0
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
+            // Membuka popup Menu2
             using (Menu2 menu2 = new Menu2())
             {
                 menu2.ShowDialog();
@@ -48,6 +49,7 @@ namespace Tubes_KPL_GUI8._0
 
         private void buttonCredit_Click(object sender, EventArgs e)
         {
+            // Menampilkan Message Box List Anggota Kelompok
             MessageBox.Show("Muhammad Thoriq Marcello - 103022300031\nAhmad Dillan Ramadhan - 103022300037\n" +
                 "Muhammad Zaky Amarullah - 103022300049\nRafa Mufid 'Aqila - 103022300061\n" +
                 "Muhammad Reza Ferdinal - 103022300135", "ANGGOTA KELOMPOK");

@@ -43,27 +43,27 @@
             // BattleTurn
             // 
             BattleTurn.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BattleTurn.Location = new Point(12, 9);
+            BattleTurn.Location = new Point(14, 12);
             BattleTurn.Name = "BattleTurn";
-            BattleTurn.Size = new Size(205, 33);
+            BattleTurn.Size = new Size(234, 44);
             BattleTurn.TabIndex = 0;
             BattleTurn.Text = "Battle Turn : ";
             // 
             // PlayerHP
             // 
             PlayerHP.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            PlayerHP.Location = new Point(58, 386);
+            PlayerHP.Location = new Point(66, 515);
             PlayerHP.Name = "PlayerHP";
-            PlayerHP.Size = new Size(149, 28);
+            PlayerHP.Size = new Size(170, 37);
             PlayerHP.TabIndex = 1;
             PlayerHP.Text = "Player HP :";
             // 
             // EnemyHP
             // 
             EnemyHP.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            EnemyHP.Location = new Point(658, 133);
+            EnemyHP.Location = new Point(752, 177);
             EnemyHP.Name = "EnemyHP";
-            EnemyHP.Size = new Size(143, 30);
+            EnemyHP.Size = new Size(163, 40);
             EnemyHP.TabIndex = 2;
             EnemyHP.Text = "Enemy HP :";
             // 
@@ -71,25 +71,28 @@
             // 
             pictureBox1.BackColor = Color.Black;
             pictureBox1.Dock = DockStyle.Bottom;
-            pictureBox1.Location = new Point(0, 362);
+            pictureBox1.Location = new Point(0, 483);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(944, 199);
+            pictureBox1.Size = new Size(1079, 265);
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
             // 
             // lstInventory
             // 
-            lstInventory.ItemHeight = 15;
-            lstInventory.Location = new Point(244, 386);
+            lstInventory.Location = new Point(279, 515);
+            lstInventory.Margin = new Padding(3, 4, 3, 4);
             lstInventory.Name = "lstInventory";
-            lstInventory.Size = new Size(459, 139);
+            lstInventory.Size = new Size(524, 184);
             lstInventory.TabIndex = 0;
+            lstInventory.SelectedIndexChanged += lstInventory_SelectedIndexChanged;
             // 
             // AttackButton
             // 
-            AttackButton.Location = new Point(771, 433);
+            AttackButton.Location = new Point(881, 577);
+            AttackButton.Margin = new Padding(3, 4, 3, 4);
             AttackButton.Name = "AttackButton";
-            AttackButton.Size = new Size(123, 38);
+            AttackButton.Size = new Size(141, 51);
             AttackButton.TabIndex = 4;
             AttackButton.Text = "Attack";
             AttackButton.UseVisualStyleBackColor = true;
@@ -97,9 +100,10 @@
             // 
             // RunButton
             // 
-            RunButton.Location = new Point(771, 487);
+            RunButton.Location = new Point(881, 649);
+            RunButton.Margin = new Padding(3, 4, 3, 4);
             RunButton.Name = "RunButton";
-            RunButton.Size = new Size(123, 38);
+            RunButton.Size = new Size(141, 51);
             RunButton.TabIndex = 5;
             RunButton.Text = "Run";
             RunButton.UseVisualStyleBackColor = true;
@@ -107,29 +111,31 @@
             // 
             // txtWeaponName
             // 
-            txtWeaponName.Location = new Point(744, 386);
+            txtWeaponName.Location = new Point(850, 515);
+            txtWeaponName.Margin = new Padding(3, 4, 3, 4);
             txtWeaponName.Name = "txtWeaponName";
-            txtWeaponName.Size = new Size(150, 23);
+            txtWeaponName.Size = new Size(171, 27);
             txtWeaponName.TabIndex = 0;
             // 
             // battleLog
             // 
             battleLog.BackColor = SystemColors.ControlDarkDark;
-            battleLog.Location = new Point(12, 47);
+            battleLog.Location = new Point(14, 63);
+            battleLog.Margin = new Padding(3, 4, 3, 4);
             battleLog.Multiline = true;
             battleLog.Name = "battleLog";
             battleLog.ReadOnly = true;
             battleLog.ScrollBars = ScrollBars.Vertical;
-            battleLog.Size = new Size(285, 116);
+            battleLog.Size = new Size(325, 153);
             battleLog.TabIndex = 0;
             // 
             // BattleForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.battleback10;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(944, 561);
+            ClientSize = new Size(1079, 748);
             Controls.Add(battleLog);
             Controls.Add(txtWeaponName);
             Controls.Add(RunButton);
@@ -139,6 +145,7 @@
             Controls.Add(PlayerHP);
             Controls.Add(BattleTurn);
             Controls.Add(pictureBox1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "BattleForm";
             Text = "Form2";
             Load += BattleForm_Load;
