@@ -89,9 +89,71 @@ namespace Tubes_KPL_GUI8._0
             textBoxDamage.Clear();
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+        private async void buttonAdd_Click(object sender, EventArgs e)
         {
+            string name = textBoxName.Text.Trim();
+            string type = textBoxType.Text.Trim();
+            int price;
+            int baseDamage;
 
+            // Validasi Name
+            string validationMessage = ValidateString.ValidateGUIString(name, "Weapon Name");
+            if (validationMessage != null)
+            {
+                MessageBox.Show(validationMessage, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validasi Type
+            validationMessage = ValidateString.ValidateGUIString(type, "Weapon Type");
+            if (validationMessage != null)
+            {
+                MessageBox.Show(validationMessage, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validasi Price
+            validationMessage = ValidateInt.ValidateGUIPositiveInteger(textBoxPrice.Text, "Weapon Price", out price);
+            if (validationMessage != null)
+            {
+                MessageBox.Show(validationMessage, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validasi Base Damage
+            validationMessage = ValidateInt.ValidateGUIPositiveInteger(textBoxDamage.Text, "Weapon Damage", out baseDamage);
+            if (validationMessage != null)
+            {
+                MessageBox.Show(validationMessage, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Weapon newWeapon = new Weapon
+            {
+                name = name,
+                type = type,
+                price = price,
+                baseDamage = baseDamage
+            };
+
+            try
+            {
+                bool success = await _weaponClient.AddWeaponAsync(newWeapon);
+                if (success)
+                {
+                    MessageBox.Show("Weapon added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    await LoadWeaponsToDataGridView(); // Muat ulang data setelah penambahan
+                    ClearInputFields();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to add weapon.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error adding weapon: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

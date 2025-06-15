@@ -301,6 +301,7 @@
             Controls.Add(labelWeapon);
             ForeColor = SystemColors.ControlText;
             Name = "Weapons";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Weapons";
             ((System.ComponentModel.ISupportInitialize)dataGridViewWeapons).EndInit();
             ResumeLayout(false);
