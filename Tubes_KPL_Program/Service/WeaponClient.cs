@@ -8,7 +8,7 @@ using Tubes_KPL_Program.Model;
 
 namespace Tubes_KPL_Program.Service
 {
-    class WeaponClient
+    public class WeaponClient
     {
         private readonly HttpClient _client;
         private readonly string _baseUrl = "https://localhost:7095/api/Weapon"; //target url API

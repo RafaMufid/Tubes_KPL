@@ -8,7 +8,7 @@ using Tubes_KPL_Program.Model;
 
 namespace Tubes_KPL_Program.Service
 {
-    class CharmClient
+    public class CharmClient
     {
         private readonly HttpClient _client;
         private readonly string _baseUrl = "https://localhost:7095/api/Charm"; //target url API

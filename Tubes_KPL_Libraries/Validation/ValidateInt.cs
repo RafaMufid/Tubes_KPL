@@ -8,6 +8,28 @@ namespace Tubes_KPL_Libraries.Validation
 {
     public static class ValidateInt
     {
+        public static string ValidateGUIPositiveInteger(string input, string fieldName, out int parsedValue)
+        {
+            parsedValue = 0; // Initialize out parameter
+
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return $"{fieldName} cannot be empty. Please enter a number.";
+            }
+
+            if (!int.TryParse(input, out parsedValue))
+            {
+                return $"{fieldName} must be a number. Please try again.";
+            }
+
+            if (parsedValue <= 0)
+            {
+                return $"{fieldName} must be a positive number. Please try again.";
+            }
+
+            return null; // Input is valid
+        }
+
         public static int GetPositiveIntegerInput(string fieldInput)
         {
             int value;
