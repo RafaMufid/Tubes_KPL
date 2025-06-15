@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tubes_KPL_Program.Model
 {
-    class Charm
+    public class Charm
     {
         public int id { get; set; }
         public string name { get; set; }

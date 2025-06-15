@@ -89,25 +89,44 @@ namespace Tubes_KPL_GUI8._0
             textBoxHealth.Clear();
             textBoxRace.Clear();
             textBoxDamage.Clear();
-
-            labelName.Text = "Name : ";
-            labelHealth.Text = "Health : ";
-            labelRace.Text = "Race : ";
-            labelDamage.Text = "Damage : ";
         }
 
         private async void buttonAdd_Click(object sender, EventArgs e)
         {
-            string name = textBoxName.Text;
+            string name = textBoxName.Text.Trim();
             int health;
-            string race = textBoxRace.Text;
+            string race = textBoxRace.Text.Trim();
             int damage;
 
-            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(race) ||
-                !int.TryParse(textBoxHealth.Text, out health) || health <= 0 ||
-                !int.TryParse(textBoxDamage.Text, out damage) || damage <= 0)
+            // Validasi Name
+            string validationMessage = ValidateString.ValidateGUIString(name, "Monster Name");
+            if (validationMessage != null)
             {
-                MessageBox.Show("Please fill all fields correctly (Health and Damage must be positive numbers).", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(validationMessage, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validasi Race
+            validationMessage = ValidateString.ValidateGUIString(race, "Monster Race");
+            if (validationMessage != null)
+            {
+                MessageBox.Show(validationMessage, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validasi Health langsung menggunakan ValidateInt.ValidateGuiPositiveInteger
+            validationMessage = ValidateInt.ValidateGUIPositiveInteger(textBoxHealth.Text, "Monster Health", out health);
+            if (validationMessage != null)
+            {
+                MessageBox.Show(validationMessage, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validasi Damage langsung menggunakan ValidateInt.ValidateGuiPositiveInteger
+            validationMessage = ValidateInt.ValidateGUIPositiveInteger(textBoxDamage.Text, "Monster Damage", out damage);
+            if (validationMessage != null)
+            {
+                MessageBox.Show(validationMessage, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -147,16 +166,40 @@ namespace Tubes_KPL_GUI8._0
                 return;
             }
 
-            string name = textBoxName.Text;
+            string name = textBoxName.Text.Trim();
             int health;
-            string race = textBoxRace.Text;
+            string race = textBoxRace.Text.Trim();
             int damage;
 
-            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(race) ||
-                !int.TryParse(textBoxHealth.Text, out health) || health <= 0 ||
-                !int.TryParse(textBoxDamage.Text, out damage) || damage <= 0)
+            // Validasi Name
+            string validationMessage = ValidateString.ValidateGUIString(name, "Monster Name");
+            if (validationMessage != null)
             {
-                MessageBox.Show("Please fill all fields correctly (Health and Damage must be positive numbers).", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(validationMessage, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validasi Race
+            validationMessage = ValidateString.ValidateGUIString(race, "Monster Race");
+            if (validationMessage != null)
+            {
+                MessageBox.Show(validationMessage, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validasi Health 
+            validationMessage = ValidateInt.ValidateGUIPositiveInteger(textBoxHealth.Text, "Monster Health", out health);
+            if (validationMessage != null)
+            {
+                MessageBox.Show(validationMessage, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validasi Damage
+            validationMessage = ValidateInt.ValidateGUIPositiveInteger(textBoxDamage.Text, "Monster Damage", out damage);
+            if (validationMessage != null)
+            {
+                MessageBox.Show(validationMessage, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

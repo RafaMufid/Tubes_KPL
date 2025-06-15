@@ -7,14 +7,91 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tubes_KPL_Program.Service;
+using Tubes_KPL_Program.Model;
+using Tubes_KPL_Libraries.Validation; // untuk validasi input
 
 namespace Tubes_KPL_GUI8._0
 {
-    public partial class Weapons: Form
+    public partial class Weapons : Form
     {
+        private WeaponClient _weaponClient;
+        private int _selectedMonsterId = -1;
+
         public Weapons()
         {
             InitializeComponent();
+            _weaponClient = new WeaponClient();
+            LoadWeaponsToDataGridView();
+            dataGridViewWeapons.AutoGenerateColumns = false;
+        }
+        private async void Weapons_Load(object sender, EventArgs e)
+        {
+            await LoadWeaponsToDataGridView();
+        }
+
+        // Metode untuk memuat semua monster dan menampilkannya di DataGridView
+        private async Task LoadWeaponsToDataGridView()
+        {
+            try
+            {
+                List<Weapon> weapons = await _weaponClient.GetAllWeaponsAsync();
+                if (weapons != null)
+                {
+                    dataGridViewWeapons.DataSource = weapons;
+                }
+                else
+                {
+                    MessageBox.Show("Failed to load monsters from API.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dataGridViewWeapons.DataSource = null; // Kosongkan jika gagal
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading monsters: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void dataGridViewWeapons_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridViewWeapons.SelectedRows.Count > 0)
+            {
+                // Ambil data dari baris yang dipilih
+                Weapon selectedWeapon = dataGridViewWeapons.SelectedRows[0].DataBoundItem as Weapon;
+                if (selectedWeapon != null)
+                {
+                    _selectedMonsterId = selectedWeapon.id;
+                    // Tampilkan data ke textbox untuk diedit
+                    textBoxName.Text = selectedWeapon.name;
+                    textBoxType.Text = selectedWeapon.type;
+                    textBoxPrice.Text = selectedWeapon.price.ToString();
+                    textBoxDamage.Text = selectedWeapon.baseDamage.ToString();
+                }
+            }
+            else
+            {
+                ClearInputFields();
+            }
+        }
+
+        // Metode untuk mengosongkan semua bidang input dan reset ID terpilih
+        private void ClearInputFields()
+        {
+            _selectedMonsterId = -1;
+            textBoxName.Clear();
+            textBoxType.Clear();
+            textBoxPrice.Clear();
+            textBoxDamage.Clear();
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
