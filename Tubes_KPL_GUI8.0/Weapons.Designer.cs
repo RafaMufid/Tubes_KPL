@@ -235,6 +235,7 @@
             buttonClr.TabIndex = 28;
             buttonClr.Text = "Clear";
             buttonClr.UseVisualStyleBackColor = false;
+            buttonClr.Click += buttonClr_Click;
             // 
             // buttonUpd
             // 
