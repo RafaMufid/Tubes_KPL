@@ -229,5 +229,38 @@ namespace Tubes_KPL_GUI8._0
                 MessageBox.Show($"Error updating weapon: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private async void buttonDel_Click(object sender, EventArgs e)
+        {
+            if (_selectedWeaponId == -1)
+            {
+                MessageBox.Show("Please select a weapon to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult confirm = MessageBox.Show($"Are you sure you want to delete weapon with ID {_selectedWeaponId}?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.Yes)
+            {
+                try
+                {
+                    bool success = await _weaponClient.DeleteWeaponAsync(_selectedWeaponId);
+                    if (success)
+                    {
+                        MessageBox.Show("Weapon deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        await LoadWeaponsToDataGridView(); // Muat ulang data setelah penghapusan
+                        ClearInputFields();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to delete weapon. Weapon might not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error deleting weapon: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

@@ -54,12 +54,5 @@
     "type": "Magic",
     "price": 500,
     "baseDamage": 200
-  },
-  {
-    "id": 8,
-    "name": "awoo",
-    "type": "awoo",
-    "price": 200,
-    "baseDamage": 150
   }
 ]
