@@ -248,6 +248,7 @@
             buttonUpd.TabIndex = 27;
             buttonUpd.Text = "Update";
             buttonUpd.UseVisualStyleBackColor = false;
+            buttonUpd.Click += buttonUpd_Click;
             // 
             // buttonDel
             // 
