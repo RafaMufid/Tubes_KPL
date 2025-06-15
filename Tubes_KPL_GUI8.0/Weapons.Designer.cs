@@ -235,6 +235,7 @@
             buttonClr.TabIndex = 28;
             buttonClr.Text = "Clear";
             buttonClr.UseVisualStyleBackColor = false;
+            buttonClr.Click += buttonClr_Click;
             // 
             // buttonUpd
             // 
@@ -248,6 +249,7 @@
             buttonUpd.TabIndex = 27;
             buttonUpd.Text = "Update";
             buttonUpd.UseVisualStyleBackColor = false;
+            buttonUpd.Click += buttonUpd_Click;
             // 
             // buttonDel
             // 
@@ -261,6 +263,7 @@
             buttonDel.TabIndex = 26;
             buttonDel.Text = "Delete";
             buttonDel.UseVisualStyleBackColor = false;
+            buttonDel.Click += buttonDel_Click;
             // 
             // buttonAdd
             // 
@@ -301,6 +304,7 @@
             Controls.Add(labelWeapon);
             ForeColor = SystemColors.ControlText;
             Name = "Weapons";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Weapons";
             ((System.ComponentModel.ISupportInitialize)dataGridViewWeapons).EndInit();
             ResumeLayout(false);
