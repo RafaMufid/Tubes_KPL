@@ -61,7 +61,7 @@ namespace Tubes_KPL_GUI8._0
         // Event handler saat seleksi di DataGridView berubah
         private void dataGridViewCharms_SelectionChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void dataGridViewCharms_SelectionChanged_1(object sender, EventArgs e)
@@ -206,6 +206,39 @@ namespace Tubes_KPL_GUI8._0
             catch (Exception ex)
             {
                 MessageBox.Show($"Error updating charm: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void buttonDel_Click(object sender, EventArgs e)
+        {
+            if (_selectedCharmId == -1)
+            {
+                MessageBox.Show("Please select a charm to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult confirm = MessageBox.Show($"Are you sure you want to delete charm with ID {_selectedCharmId}?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.Yes)
+            {
+                try
+                {
+                    bool success = await _charmClient.DeleteCharmAsync(_selectedCharmId);
+                    if (success)
+                    {
+                        MessageBox.Show("Charm deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        await LoadCharmsToDataGridView(); // Muat ulang data setelah penghapusan
+                        ClearInputFields();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to delete charm. Charm might not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error deleting charm: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }
