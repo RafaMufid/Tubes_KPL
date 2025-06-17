@@ -88,6 +88,7 @@
             buttonShop.TabIndex = 3;
             buttonShop.Text = "Shop";
             buttonShop.UseVisualStyleBackColor = false;
+            buttonShop.Click += buttonShop_Click;
             // 
             // buttonMaze
             // 

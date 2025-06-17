@@ -38,5 +38,15 @@ namespace Tubes_KPL_GUI8._0
                 this.Show(); // Tampilkan kembali form Menu2 setelah Compendium ditutup
             }
         }
+
+        private void buttonShop_Click(object sender, EventArgs e)
+        {
+            using (Shop shop = new Shop())
+            {
+                this.Hide(); // Sembunyikan form Compendium sementara
+                shop.ShowDialog();
+                this.Show(); // Tampilkan kembali form Compendium setelah Shop ditutup
+            }
+        }
     }
 }

@@ -36,5 +36,25 @@ namespace Tubes_KPL_GUI8._0
         {
             this.Close();
         }
+
+        private void buttonWeapon_Click(object sender, EventArgs e)
+        {
+            using (Weapons weaponsForm = new Weapons())
+            {
+                this.Hide(); // Sembunyikan form Compendium sementara
+                weaponsForm.ShowDialog();
+                this.Show(); // Tampilkan kembali form Compendium setelah WeaponsForm ditutup
+            }
+        }
+
+        private void buttonCharm_Click(object sender, EventArgs e)
+        {
+            using (Charms charmsForm  = new Charms())
+            {
+                this.Hide(); // Sembunyikan form Compendium sementara
+                charmsForm.ShowDialog();
+                this.Show(); // Tampilkan kembali form Compendium setelah CharmsForm ditutup
+            }
+        }
     }
 }
