@@ -241,5 +241,10 @@ namespace Tubes_KPL_GUI8._0
                 }
             }
         }
+
+        private void buttonClr_Click(object sender, EventArgs e)
+        {
+            ClearInputFields();
+        }
     }
 }
