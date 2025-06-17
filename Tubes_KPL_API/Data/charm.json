@@ -34,5 +34,17 @@
     "name": "Divine Chalice",
     "price": 70,
     "effect": "\u002B30 Heal"
+  },
+  {
+    "id": 6,
+    "name": "awoo",
+    "price": 1000,
+    "effect": "None"
+  },
+  {
+    "id": 7,
+    "name": "awoo",
+    "price": 1000,
+    "effect": "none"
   }
 ]

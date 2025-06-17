@@ -21,7 +21,6 @@ namespace Tubes_KPL_GUI8._0
         public Charms()
         {
             InitializeComponent();
-            InitializeComponent();
             _charmClient = new CharmClient();
             LoadCharmsToDataGridView();
             dataGridViewCharms.AutoGenerateColumns = false;
@@ -61,6 +60,11 @@ namespace Tubes_KPL_GUI8._0
 
         // Event handler saat seleksi di DataGridView berubah
         private void dataGridViewCharms_SelectionChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void dataGridViewCharms_SelectionChanged_1(object sender, EventArgs e)
         {
             if (dataGridViewCharms.SelectedRows.Count > 0)
             {
@@ -143,6 +147,66 @@ namespace Tubes_KPL_GUI8._0
             }
         }
 
+        private async void buttonUpd_Click(object sender, EventArgs e)
+        {
+            if (_selectedCharmId == -1)
+            {
+                MessageBox.Show("Please select a charm to update.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            string name = textBoxName.Text.Trim();
+            int price;
+            string effect = textBoxEffect.Text.Trim();
+
+            // Validasi input
+            string validationMessage = ValidateString.ValidateGUIString(name, "Charm Name");
+            if (validationMessage != null)
+            {
+                MessageBox.Show(validationMessage, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            validationMessage = ValidateInt.ValidateGUIPositiveInteger(textBoxPrice.Text, "Charm Price", out price);
+            if (validationMessage != null)
+            {
+                MessageBox.Show(validationMessage, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            validationMessage = ValidateString.ValidateGUIString(effect, "Charm Effect");
+            if (validationMessage != null)
+            {
+                MessageBox.Show(validationMessage, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Charm updatedCharm = new Charm
+            {
+                id = _selectedCharmId,
+                name = name,
+                price = price,
+                effect = effect
+            };
+
+            try
+            {
+                bool success = await _charmClient.UpdateCharmAsync(_selectedCharmId, updatedCharm);
+                if (success)
+                {
+                    MessageBox.Show("Charm updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    await LoadCharmsToDataGridView();
+                    ClearInputFields();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to update charm. Charm might not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error updating charm: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
