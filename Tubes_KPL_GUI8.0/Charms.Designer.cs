@@ -241,6 +241,7 @@
             buttonAdd.TabIndex = 31;
             buttonAdd.Text = "Add";
             buttonAdd.UseVisualStyleBackColor = false;
+            buttonAdd.Click += buttonAdd_Click;
             // 
             // Charms
             // 
