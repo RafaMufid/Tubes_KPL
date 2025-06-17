@@ -63,29 +63,31 @@
             // 
             // buttonWeapon
             // 
-            buttonWeapon.BackColor = Color.PapayaWhip;
+            buttonWeapon.BackColor = Color.Tan;
             buttonWeapon.FlatStyle = FlatStyle.Popup;
             buttonWeapon.Font = new Font("Modern No. 20", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonWeapon.ForeColor = Color.Silver;
+            buttonWeapon.ForeColor = Color.Black;
             buttonWeapon.Location = new Point(380, 218);
             buttonWeapon.Name = "buttonWeapon";
             buttonWeapon.Size = new Size(200, 200);
             buttonWeapon.TabIndex = 2;
             buttonWeapon.Text = "Weapons";
             buttonWeapon.UseVisualStyleBackColor = false;
+            buttonWeapon.Click += buttonWeapon_Click;
             // 
             // buttonCharm
             // 
-            buttonCharm.BackColor = Color.PapayaWhip;
+            buttonCharm.BackColor = Color.Tan;
             buttonCharm.FlatStyle = FlatStyle.Popup;
             buttonCharm.Font = new Font("Modern No. 20", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonCharm.ForeColor = Color.Silver;
+            buttonCharm.ForeColor = Color.Black;
             buttonCharm.Location = new Point(640, 218);
             buttonCharm.Name = "buttonCharm";
             buttonCharm.Size = new Size(200, 200);
             buttonCharm.TabIndex = 3;
             buttonCharm.Text = "Charms";
             buttonCharm.UseVisualStyleBackColor = false;
+            buttonCharm.Click += buttonCharm_Click;
             // 
             // buttonBack
             // 

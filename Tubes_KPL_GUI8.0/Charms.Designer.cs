@@ -85,6 +85,7 @@
             dataGridViewCharms.RowHeadersWidth = 51;
             dataGridViewCharms.Size = new Size(407, 184);
             dataGridViewCharms.TabIndex = 13;
+            dataGridViewCharms.SelectionChanged += dataGridViewCharms_SelectionChanged_1;
             // 
             // columnID
             // 
@@ -121,7 +122,7 @@
             // textBoxPrice
             // 
             textBoxPrice.Font = new Font("Modern No. 20", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxPrice.Location = new Point(379, 394);
+            textBoxPrice.Location = new Point(363, 394);
             textBoxPrice.Name = "textBoxPrice";
             textBoxPrice.Size = new Size(125, 29);
             textBoxPrice.TabIndex = 30;
@@ -202,6 +203,7 @@
             buttonClr.TabIndex = 34;
             buttonClr.Text = "Clear";
             buttonClr.UseVisualStyleBackColor = false;
+            buttonClr.Click += buttonClr_Click;
             // 
             // buttonUpd
             // 
@@ -215,6 +217,7 @@
             buttonUpd.TabIndex = 33;
             buttonUpd.Text = "Update";
             buttonUpd.UseVisualStyleBackColor = false;
+            buttonUpd.Click += buttonUpd_Click;
             // 
             // buttonDel
             // 
@@ -228,6 +231,7 @@
             buttonDel.TabIndex = 32;
             buttonDel.Text = "Delete";
             buttonDel.UseVisualStyleBackColor = false;
+            buttonDel.Click += buttonDel_Click;
             // 
             // buttonAdd
             // 
@@ -241,6 +245,7 @@
             buttonAdd.TabIndex = 31;
             buttonAdd.Text = "Add";
             buttonAdd.UseVisualStyleBackColor = false;
+            buttonAdd.Click += buttonAdd_Click;
             // 
             // Charms
             // 
